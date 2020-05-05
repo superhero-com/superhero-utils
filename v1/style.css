@@ -58,6 +58,7 @@ body {
   display: flex;
   align-items: center;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .superhero-button-link span {

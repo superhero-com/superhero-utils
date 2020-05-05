@@ -1,8 +1,12 @@
 document.addEventListener("DOMContentLoaded", function(event) {
-  var button = document.getElementById("superhero-tip-link");
-  var isIframe = window.self !== window.top;
-  var tipUrl = isIframe ? window.parent.location.href : window.location.href;
-
+  var link = document.getElementById("superhero-tip-link");
+  var search = window.location.search.split('=')[1];
+  var tipUrl = search ? search : window.location.href;
+  var url = new URL('https://wallet.superhero.com/tip');
+  url.searchParams.set('url', encodeURIComponent(tipUrl));
+  url.searchParams.set('x-success', window.location);
+  url.searchParams.set('x-cancel', window.location);
+  link.href = url;
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open('GET', 'https://raendom-backend.z52da5wt.xyz/cache/stats', true);
   xmlhttp.onreadystatechange = function() {
@@ -22,16 +26,4 @@ document.addEventListener("DOMContentLoaded", function(event) {
       }
   }
   xmlhttp.send(null);
-
-  button.addEventListener("click", function() {
-    var url = new URL('https://wallet.superhero.com/tip');
-    url.searchParams.set('url', encodeURIComponent(tipUrl));
-    url.searchParams.set('x-success', window.location);
-    url.searchParams.set('x-cancel', window.location);
-    if (isIframe) {
-      window.parent.location.href = url;
-    } else {
-      window.location.href = url
-    }
-  });
 });
