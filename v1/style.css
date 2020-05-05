@@ -41,7 +41,7 @@ body {
   -ms-transform: translateX(-50%) rotate(-45deg);
 }
 
-.supehero-button-tips-amount span {
+.supehero-button-tips-amount .ae {
   color: #2A9CFF;
 }
 
