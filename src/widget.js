@@ -1,6 +1,6 @@
 var buttonUrl = "https://superhero.com/buttons/v1/";
 document.addEventListener("DOMContentLoaded", function(event) {
-  var buttons = document.getElementsByClassName("superhero-tip-button");
+  var buttons = document.querySelectorAll("a.superhero-tip-button");
   var iframes = [];
   for (var i = 0; i < buttons.length; i++) {
     var size = buttons[i].getAttribute("data-size") ? buttons[i].getAttribute("data-size") : "icon";
@@ -12,11 +12,12 @@ document.addEventListener("DOMContentLoaded", function(event) {
     iframe.setAttribute('style','max-width:210px;max-height:120px;overflow:hidden;');
     iframe.setAttribute("scrolling", "no");
     iframe.setAttribute("frameborder", "0");
+    iframe.className = "superhero-tip-button";
     if (account) iframe.setAttribute("data-account", account);
     iframes[i] = iframe;
   }
 
   for(var f in iframes) {
-    document.getElementsByClassName("superhero-tip-button")[0].replaceWith(iframes[f]);
+    document.querySelectorAll("a.superhero-tip-button")[0].replaceWith(iframes[f]);
   }
 });

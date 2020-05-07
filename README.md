@@ -10,6 +10,12 @@ $ npm install
 $ npm start
 ```
 
+## How to build
+
+```sh
+$ npm run build
+```
+
 ## How to embed
 ```html
 <a class="superhero-tip-button" data-size="large" data-account="ak_... or .chain name">
