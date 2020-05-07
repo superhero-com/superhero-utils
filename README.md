@@ -9,3 +9,11 @@
 $ npm install
 $ npm start
 ```
+
+## How to embed
+```html
+<a class="superhero-tip-button" data-size="large">
+  Donate
+</a>
+<script src="widget.js"></script>
+```
