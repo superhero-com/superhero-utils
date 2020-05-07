@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 } 
               }
               var tipsEl = document.getElementById("tips");
-              if (tipsEl) tipsEl.text = tips;
+              if (tipsEl) tipsEl.innerHTML = tips;
           }
       }
   }
