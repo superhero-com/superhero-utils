@@ -1,4 +1,4 @@
-var buttonUrl = "http://localhost:5000/v1/"; // Replace with real one
+var buttonUrl = "https://superhero.com/buttons/v1/"; // Replace with real one
 document.addEventListener("DOMContentLoaded", function(event) {
   var buttons = document.getElementsByClassName("superhero-tip-button");
   var iframes = [];
