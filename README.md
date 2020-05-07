@@ -12,7 +12,7 @@ $ npm start
 
 ## How to embed
 ```html
-<a class="superhero-tip-button" data-size="large">
+<a class="superhero-tip-button" data-size="large" data-account="ak_... or .chain name">
   Donate
 </a>
 <script src="widget.js"></script>
