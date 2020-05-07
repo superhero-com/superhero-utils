@@ -1,11 +1,11 @@
 document.addEventListener("DOMContentLoaded", function(event) {
   var link = document.getElementById("superhero-tip-link");
-  var search = window.location.search.split('=')[1];
+  var search = new URL(window.location.href).searchParams.get("url");
   var tipUrl = search ? search : window.location.href;
   var url = new URL('https://wallet.superhero.com/tip');
   url.searchParams.set('url', encodeURIComponent(tipUrl));
-  url.searchParams.set('x-success', window.location);
-  url.searchParams.set('x-cancel', window.location);
+  url.searchParams.set('x-success', tipUrl);
+  url.searchParams.set('x-cancel', tipUrl);
   link.href = url;
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.open('GET', 'https://raendom-backend.z52da5wt.xyz/cache/stats', true);
