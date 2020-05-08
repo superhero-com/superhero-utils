@@ -17,6 +17,11 @@ $ npm run build
 ```
 
 ## How to embed
+Atribute | Description
+--- | --- 
+data-size | Default `icon`. Possible values `icon`, `large`, `medium`, `small`
+data-account | Optional. When set you can easily claim your tips. Possible values `account public key` or `.chain name`
+data-href | Optional. Url to be tipped. Default is set to current url - `window.location.href` 
 ```html
 <a class="superhero-tip-button" data-size="large" data-account="ak_... or .chain name">
   Donate
