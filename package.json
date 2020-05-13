@@ -1,9 +1,12 @@
 {
   "name": "@aeternity/superhero-button",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "dependencies": {},
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.5.3",
