@@ -7,7 +7,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const dir = path.resolve(__dirname, "./src/");
 module.exports = {
   entry: {
-    'index': './index.js',
     'widget': './widget.js',
     'style': './v1/style.css' 
   },
@@ -15,6 +14,9 @@ module.exports = {
   output: {
     path: __dirname + '/dist',
     filename: '[name].js'
+  },
+  resolve: {
+    extensions: ['*', '.js']
   },
   module: {
     rules: [
@@ -27,7 +29,12 @@ module.exports = {
           }
         ]
       },
-      { test: /\.(png|jpg|gif|svg)$/, loader: 'file-loader', options: { name: '[name].[ext]?[hash]' } }
+      { test: /\.(png|jpg|gif|svg)$/, loader: 'file-loader', options: { name: '[name].[ext]?[hash]' } },
+      {
+        test: /\.(js)$/,
+        exclude: /node_modules/,
+        use: ['babel-loader']
+      }
     ]
   },
   plugins: [

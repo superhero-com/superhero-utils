@@ -1,13 +1,22 @@
-<a class="superhero-tip-button" data-size="icon" data-account="ak_">
-  Donate
-</a>
-<a class="superhero-tip-button" data-size="large" data-account=".chain">
-  Donate
-</a>
-<a class="superhero-tip-button" data-size="medium">
-  Donate
-</a>
-<a class="superhero-tip-button" data-size="small">
-  Donate
-</a>
-<script src="src/widget.js"></script>
+<a class="superhero-tip-button icon">Donate</a>
+<a class="superhero-tip-button small">Donate</a>
+<a class="superhero-tip-button medium">Donate</a>
+<a class="superhero-tip-button large">Donate</a>
+
+
+<script src="dist/widget.js"></script>
+<script>
+superheroButton('.superhero-tip-button.icon', { size: 'icon', account: 'ak_-' });
+superheroButton('.superhero-tip-button.small', { size: 'small' });
+superheroButton('.superhero-tip-button.medium', { size: 'medium' });
+superheroButton(document.querySelector('.large'), { size: 'large' });
+
+// Initialize button a.superhero-tip-button appears dynamically
+setTimeout(function() {
+  var a = document.createElement("a");
+  a.className = "superhero-tip-button";
+  document.body.appendChild(a);
+  var button5 = superheroButton(a, { size: 'icon' });
+}, 5000);
+
+</script>

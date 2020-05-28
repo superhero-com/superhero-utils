@@ -8,6 +8,13 @@ body {
   padding: 0;
 }
 
+button.superhero-button-container {
+  padding: 0;
+  outline: none;
+  border: none;
+  background: transparent;
+}
+
 .superhero-button-container,
 .superhero-button-link-holder {
   display: inline-block;
