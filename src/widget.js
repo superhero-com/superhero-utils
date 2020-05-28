@@ -3,7 +3,7 @@ const { detect } = require('detect-browser');
 const defaults = {
   size: 'icon',
   url: window.location.href,
-  importCss: false,
+  inlineCss: false,
   version: 1,
   all: false
 };
@@ -109,20 +109,20 @@ class SuperheroButton {
     return button;
   }
 
-  insertStyles({ importCss }) {
+  insertStyles({ inlineCss }) {
     let css;
-    if (importCss) {
+    // TODO - implment the logic for inserting the button styles
+    if (inlineCss) {
       css = document.createElement('style');
       const content = document.createTextNode('');
       css.appendChild(content);
-    } 
+    } else {
+      css = document.createElement( "link" );
+      css.href = "https://superhero.com/buttons/style.css";
+      css.type = "text/css";
+      css.rel = "stylesheet";
+    }
 
-    css = document.createElement( "link" );
-    css.href = "https://superhero.com/buttons/style.css";
-    css.type = "text/css";
-    css.rel = "stylesheet";
-    
-    
     const head = document.getElementsByTagName('head')[0];         
     head.insertBefore(css, head.childNodes[2]);
   }
