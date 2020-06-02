@@ -1,14 +1,13 @@
-<a class="superhero-tip-button icon">Donate</a>
-<a class="superhero-tip-button small">Donate</a>
-<a class="superhero-tip-button medium">Donate</a>
-<a class="superhero-tip-button large">Donate</a>
+<div class="icon">Donate</div>
+<div class="small">Donate</div>
+<div class="medium">Donate</div>
+<div class="large">Donate</div>
 
-
-<script src="dist/widget.js"></script>
+<script src="dist/superhero-button.styles.js"></script>
 <script>
-superheroButton('.superhero-tip-button.icon', { size: 'icon', account: 'ak_-' });
-superheroButton('.superhero-tip-button.small', { size: 'small' });
-superheroButton('.superhero-tip-button.medium', { size: 'medium' });
+superheroButton('.icon', { size: 'icon', account: 'ak_-' });
+superheroButton('.small', { size: 'small' });
+superheroButton('.medium', { size: 'medium' });
 superheroButton(document.querySelector('.large'), { size: 'large' });
 
 // Initialize button a.superhero-tip-button appears dynamically
