@@ -2,130 +2,90 @@ import { detect } from 'detect-browser';
 import css from '!!css-loader!sass-loader!./style.scss';
 import icon from './img/v1-icon.png';
 
-const defaults = {
-  size: 'icon',
-  url: window.location.href,
+const isMobileDevice = navigator.userAgent.includes('Mobi');
+
+const linkToExtension = !isMobileDevice && {
+  firefox: 'https://addons.mozilla.org/en-US/firefox/addon/superhero-wallet/',
+  chrome: 'https://chrome.google.com/webstore/detail/superhero/mnhmmkepfddpifjkamaligfeemcbhdne'
+}[detect().name];
+
+const genTipDeeplink = (url) => {
+  const u = new URL('https://wallet.superhero.com/tip');
+  u.searchParams.set('url', url);
+  u.searchParams.set('x-success', url);
+  u.searchParams.set('x-cancel', url);
+  return u;
+}
+
+let tips;
+const getTipAmount = async (url) => {
+  if (!tips) {
+    tips = (await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json()).by_url;
+  }
+  return (tips.find(u => u.url === url) || {}).total_amount || 0;
 };
 
-const templates = {
-  icon: `
-    <div class="link-holder">
-      <a class="link" target="_blank">
-        <img alt="Superhero Icon" />
-      </a>
-    </div>`,
-  small: `
-    <div class="link-holder">
-      <a class="link" target="_blank">
-        <img alt="Superhero Icon" />
-        <span>Donate</span>
-      </a>
-    </div>
-    <div class="tips-amount">
-      <span class="tips">0</span>
-      <span class="ae">AE</span>
-    </div> `,
-  medium: `
-    <div class="link-holder">
-      <a class="link" target="_blank">
-        <img alt="Superhero Icon" />
-        <span>Donate Now</span>
-      </a>
-    </div>
-    <div class="tips-amount">
-      <span class="tips">0</span>
-      <span class="ae">AE</span>
-    </div>`,
-  large: `
-    <div class="tips-amount">
-      <span class="tips">0</span>
-      <span class="ae">AE</span>
-    </div>
-    <div class="link-holder">
-      <a class="link" target="_blank">
-        <img alt="Superhero Icon" />
-        <span>Donate Now</span>
-      </a>
-    </div>`
-};
+const createButtonInstance = ({ size = 'icon', url = window.location.href, account }) => {
+  // data-account attribute is needed claiming
+  // data-url attribute is needed to be detected by wallet extension
+  const genLink = (text = '') => `
+    <a
+      target="_blank"
+      href="${linkToExtension || genTipDeeplink(url)}"
+      ${account ? `data-account="${account}"` : ''}
+      data-url="${url}"
+    >
+      <img alt="Superhero Icon" src="${icon}" />
+      ${text && `<span>${text}</span>`}
+    </a>`;
 
-const createButtonInstance = ({ size, url, account }) => {
+  const tipsAmount = `
+    <div class="tips-amount">
+      <span class="tips">0</span>
+      <span class="ae">AE</span>
+    </div>`;
+
+  const templates = {
+    icon: genLink(),
+    small: genLink('Donate') + tipsAmount,
+    medium: genLink('Donate Now') + tipsAmount,
+    large: tipsAmount + genLink('Donate Now'),
+  };
+
   if (!templates[size]) throw new Error('Unsupported size');
-  var button = document.createElement('button');
+  const button = document.createElement('div');
   button.innerHTML = templates[size];
-  button.className = `superhero-button superhero-button-${size}`;
-  const isMobile = navigator.userAgent.includes('Mobi');
-  let deeplink = new URL('https://wallet.superhero.com/tip');
-  if (isMobile) {
-    deeplink.searchParams.set('url', encodeURIComponent(url));
-    deeplink.searchParams.set('x-success', url);
-    deeplink.searchParams.set('x-cancel', url);
-  } else {
-    const storeLinks = {
-      firefox: 'https://addons.mozilla.org/en-US/firefox/addon/superhero-wallet/',
-      chrome: 'https://chrome.google.com/webstore/detail/superhero/mnhmmkepfddpifjkamaligfeemcbhdne'
-    };
-    const { name } = detect();
-    if (storeLinks[name]) deeplink = new URL(storeLinks[name]);
-  }
-  
-  var link = button.querySelector(".link");
-  link.href = deeplink;
+  button.className = `superhero-button ${size}`;
 
-  // add data-account atribute for claiming
-  if (account) link.setAttribute("data-account", account);
-  // add data-url atribute to be detected by wallet extension
-  link.setAttribute("data-url", url);
+  (async () => {
+    const tipsEl = button.querySelector('.tips');
+    if (tipsEl) tipsEl.innerHTML = await getTipAmount(url);
+  })();
 
-  const getTips = async () =>  {
-    const { by_url } = await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json();
-    const tips = by_url.find(u => u.url === url) || {};
-    
-    var tipsEl = button.querySelector(".tips");
-    if (tipsEl) tipsEl.innerHTML = tips.total_amount || 0;
-  }
-
-  getTips();
-
-  const img = button.querySelector("img");
-  img.src = icon;
   return button;
 }
 
-const insertStyles = () => {
-  if (process.env.INLINE_CSS) {
-    const style = document.querySelector("style.superhero-button-styles");
-    if (style) return;
+let cssInlined = false;
+
+export default (selectorOrElement, options) => {
+  if (process.env.INLINE_CSS && !cssInlined) {
     const styles = document.createElement('style');
-    const content = document.createTextNode(css.toString());
-    styles.appendChild(content);
-    styles.className = "superhero-button-styles";
-    const head = document.getElementsByTagName('head')[0];    
-    head.insertBefore(styles, head.childNodes[0]);
-  }
-}
-
-const isNodeList = (nodes) =>  NodeList.prototype.isPrototypeOf(nodes);
-
-const superheroButton = (element, options) => {
-  const opt = { ...defaults, ...options };
-  insertStyles(opt);
-  const el = typeof element === 'string' ? document.querySelectorAll(element) : element;
-  let instance;
-  if (isNodeList(el)) {
-    let buttonInstances = [];
-    el.forEach(e => {
-      const instance = createButtonInstance(opt);
-      buttonInstances.push(instance);
-      e.replaceWith(instance);
-    });
-    instance = buttonInstances;
-  } else {
-    instance = createButtonInstance(opt);
-    el.replaceWith(instance);
+    styles.appendChild(document.createTextNode(css.toString()));
+    document.getElementsByTagName('head')[0].prepend(styles);
+    cssInlined = true;
   }
 
-  return instance;
+  const element = typeof selectorOrElement === 'string'
+      ? document.querySelectorAll(selectorOrElement)
+      : selectorOrElement;
+
+  const handleElement = element => {
+    const instance = createButtonInstance(options);
+    element.replaceWith(instance);
+    return instance;
+  };
+
+  return NodeList.prototype.isPrototypeOf(element)
+      ? Array.from(element).map(handleElement)
+      : handleElement(element);
 };
-
-export default superheroButton;

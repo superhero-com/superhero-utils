@@ -4,21 +4,11 @@ body {
   padding: 0;
 }
 
-button.superhero-button {
+div.superhero-button {
   padding: 0;
   border: none;
   background: transparent;
   display: inline-block;
-
-  &:focus {
-    border:none;
-    outline-width: 0;
-  }
-
-  .link-holder {
-    display: inline-block;
-  }
-
 
   .tips-amount {
     font-size: 32px;
@@ -52,7 +42,7 @@ button.superhero-button {
     }
   }
 
-  .link {
+  a {
     background: #1C1C24;
     color: #fff;
     border: none;
@@ -75,9 +65,9 @@ button.superhero-button {
   /**
   * Other sizes styles
   */
-  &.superhero-button-medium,
-  &.superhero-button-small {
-    display: flex;
+  &.medium,
+  &.small {
+    display: inline-flex;
     align-items: stretch;
 
     .tips-amount:after {
@@ -94,8 +84,7 @@ button.superhero-button {
   /**
   * Medium size
   */
-
-  &.superhero-button-medium {
+  &.medium {
     .tips-amount {
       display: inline-block;
       font-size: 15px;
@@ -116,8 +105,7 @@ button.superhero-button {
   /**
   * Small size
   */
-
-  &.superhero-button-small {
+  &.small {
     .tips-amount {
       display: inline-block;
       font-size: 13px;
@@ -134,26 +122,25 @@ button.superhero-button {
       }
     }
 
-    .link {
+    a {
       font-size: 13px;
       padding: 7px 13px 7px 8px;
-    }
 
-    img {
-      width: 18px;
-      height: 14px;
+      img {
+        width: 18px;
+        height: 14px;
+      }
     }
   } 
 
-  
   /**
   * Icon size
   */ 
-  &.superhero-button-icon {
+  &.icon {
     width: 40px;
     height: 40px;
 
-    .link {
+    a {
       padding: 9px 7px;
     }
   }
