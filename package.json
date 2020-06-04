@@ -2,7 +2,8 @@
   "name": "@aeternity/superhero-button",
   "version": "0.1.2",
   "description": "",
-  "main": "index.js",
+  "main": "dist/superhero-button.js",
+  "browser": "dist/superhero-button.js",
   "dependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "detect-browser": "^5.1.0",

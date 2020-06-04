@@ -8,7 +8,7 @@ const dir = path.resolve(__dirname, "./src/");
 function configure (filename, opts = {}) {
   return (env, argv) => ({
     entry: {
-      [`${filename}.js`]: './index.js',
+      [filename]: './superhero-button.js',
       'style': './style.scss'
     },
     context: dir,
@@ -16,10 +16,11 @@ function configure (filename, opts = {}) {
       path: __dirname + '/dist',
       filename:'[name]',
       library: 'superheroButton',
+      libraryExport: "default",
       libraryTarget: 'umd'
     },
-    resolve: {
-      extensions: ['*', '.js']
+    node: {
+      fs: 'empty'
     },
     module: {
       rules: [
@@ -66,6 +67,6 @@ function configure (filename, opts = {}) {
   });
 }
 module.exports = [
-  configure('superhero-button.styles', { inlineCss: true }),
-  configure('superhero-button'),
+  configure('superhero-button.styles.js', { inlineCss: true }),
+  configure('superhero-button.js'),
 ];
