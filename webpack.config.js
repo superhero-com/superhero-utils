@@ -1,61 +1,72 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-// const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CopyPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const dir = path.resolve(__dirname, "./src/");
-module.exports = {
-  entry: {
-    'index': './index.js',
-    'widget': './widget.js',
-    'style': './v1/style.css' 
-  },
-  context: dir,
-  output: {
-    path: __dirname + '/dist',
-    filename: '[name].js'
-  },
-  module: {
-    rules: [
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          }
-        ]
-      },
-      { test: /\.(png|jpg|gif|svg)$/, loader: 'file-loader', options: { name: '[name].[ext]?[hash]' } }
-    ]
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: "[name].css" 
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'v1', 'icon.html'),
-      filename: 'v1/icon.html',
-      inject: false
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'v1', 'large.html'),
-      filename: 'v1/large.html',
-      inject: false
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'v1', 'medium.html'),
-      filename: 'v1/medium.html',
-      inject: false
-    }),
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, 'src', 'v1', 'small.html'),
-      filename: 'v1/small.html',
-      inject: false
-    }),
-    new CopyPlugin([
-      { from: 'img', to: 'img' },
-    ]),
-  ]
+
+function configure (filename, opts = {}) {
+  return (env, argv) => ({
+    entry: {
+      [filename]: './superhero-button.js',
+      'style': './style.scss'
+    },
+    context: dir,
+    output: {
+      path: __dirname + '/dist',
+      filename:'[name]',
+      library: 'superheroButton',
+      libraryExport: "default",
+      libraryTarget: 'umd'
+    },
+    node: {
+      fs: 'empty'
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(js)$/,
+          exclude: /node_modules/,
+          use: ['babel-loader']
+        },
+        {
+          test: /\.scss$/i,
+          use: [
+            MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          ],
+        },
+        {
+          test: /\.(png|jpg|gif)$/i,
+          use: [
+            {
+              loader: 'url-loader',
+              options: {
+                limit: 10000,
+                name: 'images/[name]-[hash:8].[ext]'
+              },
+            },
+          ],
+        },
+      ]
+    },
+    plugins: [
+      new MiniCssExtractPlugin({
+        filename: "[name].css" 
+      }),
+      new webpack.DefinePlugin({
+        global: 'window',
+          'process.env': {
+            INLINE_CSS: JSON.stringify(opts.inlineCss),
+          },
+      }),
+      new CleanWebpackPlugin({
+        cleanAfterEveryBuildPatterns: ['*', '!*.css', '!*.js'],
+        protectWebpackAssets: false
+      })
+    ],
+  });
 }
+module.exports = [
+  configure('superhero-button.styles.js', { inlineCss: true }),
+  configure('superhero-button.js'),
+];
