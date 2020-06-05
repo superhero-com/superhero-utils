@@ -5,17 +5,23 @@
 
 <script src="dist/superhero-button.styles.js"></script>
 <script>
-superheroButton('.icon', { size: 'icon', account: 'ak_-' });
-superheroButton('.small', { size: 'small' });
-superheroButton('.medium', { size: 'medium' });
-superheroButton(document.querySelector('.large'), { size: 'large' });
+/* 
+* Create superhero button instance by pointing element with its selector
+*/
+superheroButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
+superheroButton('.small', { size: 'small', account: 'ak_... or .chain name' });
+superheroButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
+
+/*
+* Create superhero button instance by passing DOM element instance
+*/
+superheroButton(document.querySelector('.large'), { size: 'large', account: 'ak_... or .chain name' });
 
 // Initialize button a.superhero-tip-button appears dynamically
 setTimeout(function() {
-  var a = document.createElement("a");
-  a.className = "superhero-tip-button";
-  document.body.appendChild(a);
-  var button5 = superheroButton(a, { size: 'icon' });
+  var btn = document.createElement("div");
+  document.body.appendChild(btn);
+  superheroButton(btn, { size: 'icon' });
 }, 5000);
 
 </script>
