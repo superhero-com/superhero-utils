@@ -14,25 +14,26 @@ div.superhero-button {
     position: relative;
     text-align: center;
     padding: 19px 0;
-    border: 1px solid #BABAC0;
+    border: 1px solid #babac0;
     border-radius: 5px;
     margin-bottom: 14px;
     background-color: #fff;
+    color: black;
 
     .ae {
-      color: #2A9CFF;
+      color: #2a9cff;
     }
 
     &:after {
-      content: "";
+      content: '';
       width: 12px;
       height: 12px;
       position: absolute;
       bottom: -7.2px;
       left: 50%;
       background: #fff;
-      border-left: 1px solid #BABAC0;
-      border-bottom: 1px solid #BABAC0;
+      border-left: 1px solid #babac0;
+      border-bottom: 1px solid #babac0;
       transform: translateX(-50%) rotate(-45deg);
       -webkit-transform: translateX(-50%) rotate(-45deg);
       -ms-transform: translateX(-50%) rotate(-45deg);
@@ -40,7 +41,7 @@ div.superhero-button {
   }
 
   a {
-    background: #1C1C24;
+    background: #1c1c24;
     color: #fff;
     border: none;
     outline: none;
@@ -72,8 +73,8 @@ div.superhero-button {
       -webkit-transform: translateY(-50%) rotate(-45deg);
       -ms-transform: translateY(-50%) rotate(-45deg);
       border: none;
-      border-left: 1px solid #BABAC0;
-      border-top: 1px solid #BABAC0;
+      border-left: 1px solid #babac0;
+      border-top: 1px solid #babac0;
       bottom: auto;
     }
   }
@@ -89,6 +90,7 @@ div.superhero-button {
       margin-bottom: 0;
       margin-left: 15px;
       line-height: 17px;
+      color: black;
 
       &:after {
         width: 9px;
@@ -110,6 +112,7 @@ div.superhero-button {
       padding: 8px 5px;
       margin-bottom: 0;
       margin-left: 15px;
+      color: black;
 
       &:after {
         width: 9px;
@@ -128,11 +131,11 @@ div.superhero-button {
         height: 14px;
       }
     }
-  } 
+  }
 
   /**
   * Icon size
-  */ 
+  */
   &.icon {
     width: 40px;
     height: 40px;
