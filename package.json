@@ -1,6 +1,6 @@
 {
   "name": "@aeternity/superhero-button",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "",
   "main": "dist/superhero-button.styles.js",
   "browser": "dist/superhero-button.styles.js",
