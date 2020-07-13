@@ -25,7 +25,7 @@ const getTipAmount = async (url) => {
   return (tips.find(u => u.url === url) || {}).total_amount || 0;
 };
 
-const createButtonInstance = ({ size = 'icon', url = window.location.href, account }) => {
+export const createButtonInstance = ({ size = 'icon', url = window.location.href, account }) => {
   // data-account attribute is needed claiming
   // data-url attribute is needed to be detected by wallet extension
   const genLink = (text = '') => `
