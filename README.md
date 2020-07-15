@@ -1,6 +1,13 @@
 # Superhero Button
 
-## How to embed the button in your website 
+You can get it as npm package or from the unpkg.com.
+
+## With npm
+```
+npm i @aeternity/superhero-button --save
+```
+
+## With unpkg.com and <script> tag
 Select the button style you like the most and copy the code to your website's HTML.
 Edit the `account` option and put your address or .chain name in order to be able to receive tips.
 
