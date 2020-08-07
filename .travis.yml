@@ -4,6 +4,11 @@ node_js: 12
 script: npm run build
 
 deploy:
+  - provider: script
+    skip_cleanup: true
+    script: sed -i '/dist/d' .gitignore
+    on:
+      branch: master
   - provider: pages
     skip_cleanup: true
     github_token: $GITHUB_TOKEN
