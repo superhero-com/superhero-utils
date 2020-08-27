@@ -36,8 +36,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "serve",
-    "build": "webpack --hide-modules"
+    "start": "npm run build && serve",
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
