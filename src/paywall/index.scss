@@ -1,0 +1,27 @@
+@use '../variables';
+
+.superhero-paywall {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(128, 128, 128, .5);
+  z-index: 100;
+  backdrop-filter: blur(3px);
+
+  .modal {
+    margin: auto;
+    padding: 1rem;
+    background-color: #fff;
+    font-family: variables.$font-family;
+    border: variables.$border;
+    border-radius: variables.$border-radius;
+    text-align: center;
+
+    .superhero-button {
+      margin-top: 1rem;
+    }
+  }
+}

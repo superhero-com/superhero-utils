@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap');
+@use '../variables';
 
-div.superhero-button {
+.superhero-button {
   padding: 0;
   border: none;
   background: transparent;
   display: inline-block;
-  font-family: 'Roboto', sans-serif;
+  font-family: variables.$font-family;
 
   .tips-amount {
     font-size: 32px;
@@ -14,14 +14,14 @@ div.superhero-button {
     position: relative;
     text-align: center;
     padding: 19px 0;
-    border: 1px solid #babac0;
-    border-radius: 5px;
+    border: variables.$border;
+    border-radius: variables.$border-radius;
     margin-bottom: 14px;
     background-color: #fff;
     color: black;
 
     .ae {
-      color: #2a9cff;
+      color: variables.$accent-color;
     }
 
     &:after {
@@ -32,8 +32,8 @@ div.superhero-button {
       bottom: -7.2px;
       left: 50%;
       background: #fff;
-      border-left: 1px solid #babac0;
-      border-bottom: 1px solid #babac0;
+      border-left: variables.$border;
+      border-bottom: variables.$border;
       transform: translateX(-50%) rotate(-45deg);
       -webkit-transform: translateX(-50%) rotate(-45deg);
       -ms-transform: translateX(-50%) rotate(-45deg);
@@ -41,12 +41,12 @@ div.superhero-button {
   }
 
   a {
-    background: #1c1c24;
+    background: variables.$background-color;
     color: #fff;
     border: none;
     outline: none;
     padding: 10px 16px 10px 13px;
-    border-radius: 5px;
+    border-radius: variables.$border-radius;
     font-size: 15px;
     font-weight: 900;
     line-height: 20px;
