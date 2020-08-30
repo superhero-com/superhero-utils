@@ -13,7 +13,7 @@ const genConfig = (filename, opts = {}) => ({
   context: dir,
   output: {
     path: __dirname + '/dist',
-    filename:'[name]',
+    filename: '[name]',
     library: 'superheroButton',
     libraryExport: 'default',
     libraryTarget: 'umd'
@@ -53,7 +53,6 @@ const genConfig = (filename, opts = {}) => ({
       filename: '[name].css'
     }),
     new webpack.DefinePlugin({
-      global: 'window',
       'process.env': {
         INLINE_CSS: JSON.stringify(opts.inlineCss),
       },
