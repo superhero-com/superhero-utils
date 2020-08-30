@@ -70,7 +70,7 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
 
 let cssInlined = false;
 
-export default (selectorOrElement, options) => {
+export default (selectorOrElement, options = {}) => {
   if (process.env.INLINE_CSS && !cssInlined) {
     const styles = document.createElement('style');
     styles.appendChild(document.createTextNode(css.toString()));
