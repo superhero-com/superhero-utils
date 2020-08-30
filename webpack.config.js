@@ -34,14 +34,11 @@ const genConfig = (filename, { inlineCss } = {}) => ({
   },
   plugins: [
     ...inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'style.css' })],
-    new CleanWebpackPlugin({
-      cleanAfterEveryBuildPatterns: ['*', '!*.css', '!*.js'],
-      protectWebpackAssets: false
-    })
+    new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [] }),
   ],
 });
 
 module.exports = [
-  genConfig('superhero-button.styles.js', { inlineCss: true }),
   genConfig('superhero-button.js'),
+  genConfig('superhero-button.styles.js', { inlineCss: true }),
 ];
