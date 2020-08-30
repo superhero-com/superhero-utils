@@ -15,14 +15,14 @@ const genTipDeeplink = (url) => {
   u.searchParams.set('x-success', url);
   u.searchParams.set('x-cancel', url);
   return u;
-}
+};
 
 let tips;
 const getTipAmount = async (url) => {
   if (!tips) {
     tips = (await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json()).by_url;
   }
-  return (tips.find(u => u.url === url) || {}).total_amount || 0;
+  return tips.find(u => u.url === url)?.total_amount || 0;
 };
 
 const createButtonInstance = ({ size = 'icon', url = window.location.href, account }) => {
@@ -63,7 +63,7 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
   })();
 
   return button;
-}
+};
 
 let cssInlined = false;
 
@@ -76,8 +76,8 @@ export default (selectorOrElement, options) => {
   }
 
   const element = typeof selectorOrElement === 'string'
-      ? document.querySelectorAll(selectorOrElement)
-      : selectorOrElement;
+    ? document.querySelectorAll(selectorOrElement)
+    : selectorOrElement;
 
   const handleElement = element => {
     const instance = createButtonInstance(options);
@@ -86,6 +86,6 @@ export default (selectorOrElement, options) => {
   };
 
   return NodeList.prototype.isPrototypeOf(element)
-      ? Array.from(element).map(handleElement)
-      : handleElement(element);
+    ? Array.from(element).map(handleElement)
+    : handleElement(element);
 };
