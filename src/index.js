@@ -1,13 +1,5 @@
-import { detect } from 'detect-browser';
 import './index.scss';
 import icon from './img/v1-icon.png';
-
-const isMobileDevice = navigator.userAgent.includes('Mobi');
-
-const linkToExtension = !isMobileDevice && {
-  firefox: 'https://addons.mozilla.org/en-US/firefox/addon/superhero-wallet/',
-  chrome: 'https://chrome.google.com/webstore/detail/superhero/mnhmmkepfddpifjkamaligfeemcbhdne'
-}[detect().name];
 
 const genTipDeeplink = ({ url, ...params }) => {
   const u = new URL('https://wallet.superhero.com/tip');
@@ -30,13 +22,10 @@ const getTipAmount = async (url) => {
 
 const createButtonInstance = ({ size = 'icon', url = window.location.href, account, ...options }) => {
   // data-account attribute is needed claiming
-  // data-url attribute is needed to be detected by wallet extension
   const genLink = (text = '') => `
     <a
-      target="_blank"
-      href="${linkToExtension || genTipDeeplink({ url, ...options })}"
+      href="${genTipDeeplink({ url, ...options })}"
       ${account ? `data-account="${account}"` : ''}
-      data-url="${url}"
     >
       <img alt="Superhero Icon" src="${icon}" />
       ${text && `<span>${text}</span>`}
