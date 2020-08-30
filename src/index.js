@@ -1,5 +1,5 @@
 import { detect } from 'detect-browser';
-import css from '!!css-loader!sass-loader!./style.scss';
+import './index.scss';
 import icon from './img/v1-icon.png';
 
 const isMobileDevice = navigator.userAgent.includes('Mobi');
@@ -68,16 +68,7 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
   return button;
 };
 
-let cssInlined = false;
-
 export default (selectorOrElement, options = {}) => {
-  if (process.env.INLINE_CSS && !cssInlined) {
-    const styles = document.createElement('style');
-    styles.appendChild(document.createTextNode(css.toString()));
-    document.getElementsByTagName('head')[0].prepend(styles);
-    cssInlined = true;
-  }
-
   const element = typeof selectorOrElement === 'string'
     ? document.querySelectorAll(selectorOrElement)
     : selectorOrElement;

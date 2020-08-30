@@ -1,54 +1,39 @@
 const path = require('path');
-const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const dir = path.resolve(__dirname, './src/');
-
-const genConfig = (filename, opts = {}) => ({
-  entry: {
-    [filename]: './superhero-button.js',
-    'style': './style.scss'
-  },
-  context: dir,
+const genConfig = (filename, { inlineCss } = {}) => ({
   output: {
-    path: __dirname + '/dist',
-    filename: '[name]',
+    path: path.resolve(__dirname, 'dist'),
+    filename,
     library: 'superheroButton',
     libraryExport: 'default',
     libraryTarget: 'umd'
   },
-  node: {
-    fs: 'empty'
-  },
+  target: 'web',
   module: {
     rules: [
       {
-        test: /\.(js)$/,
+        test: /\.js$/,
         exclude: /node_modules/,
         use: ['babel-loader']
       },
       {
-        test: /\.scss$/i,
+        test: /\.scss$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'
+          inlineCss ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader',
         ],
       },
       {
-        test: /\.(png|jpg|gif)$/i,
+        test: /\.(png|jpg|gif)$/,
         use: 'url-loader',
       },
     ]
   },
   plugins: [
-    new MiniCssExtractPlugin({
-      filename: '[name].css'
-    }),
-    new webpack.DefinePlugin({
-      'process.env': {
-        INLINE_CSS: JSON.stringify(opts.inlineCss),
-      },
-    }),
+    ...inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'style.css' })],
     new CleanWebpackPlugin({
       cleanAfterEveryBuildPatterns: ['*', '!*.css', '!*.js'],
       protectWebpackAssets: false
