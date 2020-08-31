@@ -5,7 +5,7 @@
 
 <script src="dist/superhero-button.styles.js"></script>
 <script>
-/* 
+/*
 * Create superhero button instance by pointing element with its selector
 */
 superheroButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
@@ -21,7 +21,7 @@ superheroButton(document.querySelector('.large'), { size: 'large', account: 'ak_
 setTimeout(function() {
   var btn = document.createElement("div");
   document.body.appendChild(btn);
-  superheroButton(btn, { size: 'icon' });
+  superheroButton(btn);
 }, 5000);
 
 </script>
