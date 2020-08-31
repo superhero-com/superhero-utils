@@ -1,5 +1,5 @@
 import { detect } from 'detect-browser';
-import css from '!!css-loader!sass-loader!./style.scss';
+import './index.scss';
 import icon from './img/v1-icon.png';
 
 const isMobileDevice = navigator.userAgent.includes('Mobi');
@@ -9,29 +9,32 @@ const linkToExtension = !isMobileDevice && {
   chrome: 'https://chrome.google.com/webstore/detail/superhero/mnhmmkepfddpifjkamaligfeemcbhdne'
 }[detect().name];
 
-const genTipDeeplink = (url) => {
+const genTipDeeplink = ({ url, ...params }) => {
   const u = new URL('https://wallet.superhero.com/tip');
   u.searchParams.set('url', url);
   u.searchParams.set('x-success', url);
   u.searchParams.set('x-cancel', url);
+  Object.entries(params)
+    .filter(([, value]) => ![undefined, null].includes(value))
+    .forEach(([name, value]) => u.searchParams.set(name, value));
   return u;
-}
+};
 
 let tips;
 const getTipAmount = async (url) => {
   if (!tips) {
     tips = (await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json()).by_url;
   }
-  return (tips.find(u => u.url === url) || {}).total_amount || 0;
+  return tips.find(u => u.url === url)?.total_amount || 0;
 };
 
-const createButtonInstance = ({ size = 'icon', url = window.location.href, account }) => {
+const createButtonInstance = ({ size = 'icon', url = window.location.href, account, ...options }) => {
   // data-account attribute is needed claiming
   // data-url attribute is needed to be detected by wallet extension
   const genLink = (text = '') => `
     <a
       target="_blank"
-      href="${linkToExtension || genTipDeeplink(url)}"
+      href="${linkToExtension || genTipDeeplink({ url, ...options })}"
       ${account ? `data-account="${account}"` : ''}
       data-url="${url}"
     >
@@ -63,21 +66,12 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
   })();
 
   return button;
-}
+};
 
-let cssInlined = false;
-
-export default (selectorOrElement, options) => {
-  if (process.env.INLINE_CSS && !cssInlined) {
-    const styles = document.createElement('style');
-    styles.appendChild(document.createTextNode(css.toString()));
-    document.getElementsByTagName('head')[0].prepend(styles);
-    cssInlined = true;
-  }
-
+export default (selectorOrElement, options = {}) => {
   const element = typeof selectorOrElement === 'string'
-      ? document.querySelectorAll(selectorOrElement)
-      : selectorOrElement;
+    ? document.querySelectorAll(selectorOrElement)
+    : selectorOrElement;
 
   const handleElement = element => {
     const instance = createButtonInstance(options);
@@ -86,6 +80,6 @@ export default (selectorOrElement, options) => {
   };
 
   return NodeList.prototype.isPrototypeOf(element)
-      ? Array.from(element).map(handleElement)
-      : handleElement(element);
+    ? Array.from(element).map(handleElement)
+    : handleElement(element);
 };
