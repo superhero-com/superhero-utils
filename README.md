@@ -1,117 +1,94 @@
 # Superhero Button
 
+## Installation
+
 You can get it as npm package or from the unpkg.com.
 
-## With npm
-```
-npm i @aeternity/superhero-button --save
-```
+### With npm
+- run `$ npm install @aeternity/superhero-button --save` in the root or your project
+- import this package by `import superheroButton from '@aeternity/superhero-button';`
 
-## With unpkg.com and <script> tag
-Select the button style you like the most and copy the code to your website's HTML.
-Edit the `account` option and put your address or .chain name in order to be able to receive tips.
-
-To create instance of superheroButton with styles import
+### With unpkg.com and `<script>` tag
+Add this to your website's HTML:
 ```html
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
+<script src="https://unpkg.com/@aeternity/superhero-button@0.2.3/dist/superhero-button.styles.js"></script>
 ```
-To deal with styles by your own import
+This will define `superheroButton` in the global scope.
+
+### With custom styles
+You can import and process styles manually by importing `dist/style.css` and
+`dist/superhero-button.js` separately. Or even you can don't import styles at
+all, and write your own instead.
+
+## Usage
+
+### Button (`superheroButton`)
+This library exports a function that creates buttons. This function accepts arguments:
+- class name of nodes that should become buttons, or the DOM node itself
+  (this option simplifies integration into Frontend frameworks like Vue/React)
+- options object
+
+Option | Description
+--- | ---
+`size` | Default `icon`. Possible values `icon`, `large`, `medium`, `small`. See the screenshots section below.
+`account` | Optional. When set you can easily claim your tips. Accepts account public key or name ending with .chain.
+`url` | Optional. Url to be tipped. Default is set to the current page url.
+
+#### Example
+
 ```html
-<link rel="stylesheet" href="https://unpkg.com/@aeternity/superhero-button/dist/style.css">
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.js"></script>
-```
-
-### Icon
-
-<img width="49" alt="Screenshot 2020-05-13 at 9 55 51" src="https://user-images.githubusercontent.com/13139371/81780948-04b91b00-9500-11ea-9a50-3f483613dca0.png">
-
-```html
-<div class="icon">Donate</div>
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
+<div class="my-button">Donate</div>
 <script type="text/javascript">
-  superheroButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
+  superheroButton('.my-button', {
+    size: 'large',
+    account: 'example.chain',
+    url: 'https://example.com',
+  });
 </script>
 ```
+Select the button style you like the most and adopt this code to your website's HTML.
+Additional examples can be found [here](./index.html).
 
-### Small
+#### Screenshots
 
-<img width="142" alt="Screenshot 2020-05-13 at 9 55 59" src="https://user-images.githubusercontent.com/13139371/81780933-01259400-9500-11ea-8d84-a2624b43edec.png">
+Size value | Screenshot
+--- | ---
+`icon` | <img width="49" alt="icon" src="https://user-images.githubusercontent.com/13139371/81780948-04b91b00-9500-11ea-9a50-3f483613dca0.png">
+`small` | <img width="142" alt="small" src="https://user-images.githubusercontent.com/13139371/81780933-01259400-9500-11ea-8d84-a2624b43edec.png">
+`medium` | <img width="203" alt="medium" src="https://user-images.githubusercontent.com/13139371/81780936-0256c100-9500-11ea-960e-9256a941285d.png">
+`large` | <img width="140" alt="large" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
 
-```html
-<div class="small">Donate</div>
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
-<script type="text/javascript">
-  superheroButton('.small', { size: 'small', account: 'ak_... or .chain name' });
-</script>
-```
+### Paywall (`superheroButton.ensurePayed`)
+This function asks the user to send a tip to the specified page. It won't ask to send a
+tip if it was sent before using the current browser. The function accepts options object.
 
-### Medium
+Option | Description
+--- | ---
+`url` | Optional. Url to be required to pay for. Default is set to the current page url.
 
-<img width="203" alt="Screenshot 2020-05-13 at 9 55 56" src="https://user-images.githubusercontent.com/13139371/81780936-0256c100-9500-11ea-960e-9256a941285d.png">
-
-```html
-<div class="medium">Donate</div>
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
-<script type="text/javascript">
-  superheroButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
-</script>
-```
-
-### Large
-
-<img width="140" alt="Screenshot 2020-05-13 at 9 55 54" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
+#### Example
 
 ```html
-<div class="large">Donate</div>
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
 <script type="text/javascript">
-  superheroButton('.large', { size: 'large', account: 'ak_... or .chain name' });
+  superheroButton.ensurePayed({ url: 'https://example.com' });
 </script>
 ```
+Additional examples can be found [here](./index.html).
 
+#### Screenshots
 
-Optios | Description
---- | --- 
-size | Default `icon`. Possible values `icon`, `large`, `medium`, `small`
-account | Optional. When set you can easily claim your tips. Possible values `account public key` or `.chain name`
-url | Optional. Url to be tipped. Default is set to current url - `window.location.href` 
+<img width="607" alt="Paywall" src="https://user-images.githubusercontent.com/9007851/95088220-58d0d000-072b-11eb-8cd6-57052d40765c.png">
 
+## Start the project for development
 
-## Usage example
-```html
-<div class="icon">Donate</div>
-<div class="small">Donate</div>
-<div class="medium">Donate</div>
-<div class="large">Donate</div>
-
-<script src="https://unpkg.com/@aeternity/superhero-button/dist/superhero-button.styles.js"></script>
-<script type="text/javascript">
-/* 
-* Create superhero button instance by pointing element with its selector
-*/
-superheroButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
-superheroButton('.small', { size: 'small', account: 'ak_... or .chain name' });
-superheroButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
-
-/*
-* Create superhero button instance by passing DOM element instance
-*/
-superheroButton(document.querySelector('.large'), { size: 'large', account: 'ak_... or .chain name' });
-</script>
-```
-
-## How to start the project for development
-
-Requirements:
-- Node
-- Npm
+You need to install [Node.js](https://nodejs.org/) firstly.
 
 ```sh
 $ npm install
 $ npm start
 ```
 
-## How to build for deployment
+## Build for production
 
 ```sh
 $ npm run build
