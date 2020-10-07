@@ -11,7 +11,7 @@ You can get it as npm package or from the unpkg.com.
 ### With unpkg.com and `<script>` tag
 Add this to your website's HTML:
 ```html
-<script src="https://unpkg.com/@aeternity/superhero-button@0.2.3/dist/superhero-button.styles.js"></script>
+<script src="https://unpkg.com/@aeternity/superhero-button@0.3.0/dist/superhero-button.styles.js"></script>
 ```
 This will define `superheroButton` in the global scope.
 
