@@ -1,7 +1,3 @@
 import './global.scss';
-import { default as createButton } from './button';
-import { default as ensurePayed } from './paywall';
-
-Object.assign(createButton, { ensurePayed });
-
-export default createButton;
+export { default as createButton } from './button';
+export { default as ensurePayed } from './paywall';
