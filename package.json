@@ -4,9 +4,7 @@
   "description": "",
   "main": "dist/superhero-button.styles.js",
   "browser": "dist/superhero-button.styles.js",
-  "dependencies": {
-    "detect-browser": "^5.1.0"
-  },
+  "dependencies": {},
   "files": [
     "dist",
     "src"
