@@ -17,7 +17,7 @@ const getTipAmount = async (url) => {
   if (!tips) {
     tips = (await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json()).by_url;
   }
-  return tips.find(u => u.url === url)?.total_amount || 0;
+  return tips.find(u => u.url === url)?.total_amount_ae || 0;
 };
 
 const createButtonInstance = ({ size = 'icon', url = window.location.href, account, ...options }) => {
