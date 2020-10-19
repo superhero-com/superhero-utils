@@ -25,7 +25,7 @@ export default async ({ url = removeWalletResponse(window.location.href) } = {})
   if (getPayedUrls().includes(url)) return;
 
   const overlay = document.createElement('div');
-  overlay.className = 'superhero-paywall';
+  overlay.className = 'superhero-utils-paywall';
   overlay.innerHTML = `
     <div class="modal">
       You need to leave a tip to continue

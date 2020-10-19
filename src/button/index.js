@@ -47,7 +47,7 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
   if (!templates[size]) throw new Error('Unsupported size');
   const button = document.createElement('div');
   button.innerHTML = templates[size];
-  button.className = `superhero-button-2 ${size}`;
+  button.className = `superhero-utils-button ${size}`;
 
   (async () => {
     const tipsEl = button.querySelector('.tips');

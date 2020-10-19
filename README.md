@@ -1,28 +1,28 @@
-# Superhero Button
+# Superhero Utils
 
 ## Installation
 
 You can get it as npm package or from the unpkg.com.
 
 ### With npm
-- run `$ npm install @aeternity/superhero-button --save` in the root or your project
-- import this package by `import superheroButton from '@aeternity/superhero-button';`
+- run `$ npm install @aeternity/superhero-utils --save` in the root or your project
+- import this package by `import superheroUtils from '@aeternity/superhero-utils';`
 
 ### With unpkg.com and `<script>` tag
 Add this to your website's HTML:
 ```html
-<script src="https://unpkg.com/@aeternity/superhero-button@0.3.0/dist/superhero-button.styles.js"></script>
+<script src="https://unpkg.com/@aeternity/superhero-utils@0.3.0/dist/index.js"></script>
 ```
-This will define `superheroButton` in the global scope.
+This will define `superheroUtils` in the global scope.
 
 ### With custom styles
-You can import and process styles manually by importing `dist/style.css` and
-`dist/superhero-button.js` separately. Or even you can don't import styles at
+You can import and process styles manually by importing `dist/index.css` and
+`dist/index-without-styles.js` separately. Or even you can don't import styles at
 all, and write your own instead.
 
 ## Usage
 
-### Button (`superheroButton`)
+### Button (`superheroUtils.createButton`)
 This library exports a function that creates buttons. This function accepts arguments:
 - class name of nodes that should become buttons, or the DOM node itself
   (this option simplifies integration into Frontend frameworks like Vue/React)
@@ -39,7 +39,7 @@ Option | Description
 ```html
 <div class="my-button">Donate</div>
 <script type="text/javascript">
-  superheroButton('.my-button', {
+  superheroUtils.createButton('.my-button', {
     size: 'large',
     account: 'example.chain',
     url: 'https://example.com',
@@ -58,7 +58,7 @@ Size value | Screenshot
 `medium` | <img width="203" alt="medium" src="https://user-images.githubusercontent.com/13139371/81780936-0256c100-9500-11ea-960e-9256a941285d.png">
 `large` | <img width="140" alt="large" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
 
-### Paywall (`superheroButton.ensurePayed`)
+### Paywall (`superheroUtils.ensurePayed`)
 This function asks the user to send a tip to the specified page. It won't ask to send a
 tip if it was sent before using the current browser. The function accepts options object.
 
@@ -70,7 +70,7 @@ Option | Description
 
 ```html
 <script type="text/javascript">
-  superheroButton.ensurePayed({ url: 'https://example.com' });
+  superheroUtils.ensurePayed({ url: 'https://example.com' });
 </script>
 ```
 Additional examples can be found [here](./index.html).
