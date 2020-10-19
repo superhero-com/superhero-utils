@@ -1,6 +1,6 @@
 @use '../variables';
 
-.superhero-paywall {
+.superhero-utils-paywall {
   display: flex;
   position: fixed;
   top: 0;
@@ -20,7 +20,7 @@
     border-radius: variables.$border-radius;
     text-align: center;
 
-    .superhero-button-2 {
+    .superhero-utils-button {
       margin-top: 1rem;
     }
   }

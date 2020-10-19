@@ -22,29 +22,29 @@
 <p>Sed eu convallis nisi. Proin aliquam diam eget risus venenatis pharetra. Sed varius commodo mauris eu accumsan. Donec erat tellus, vestibulum in efficitur non, aliquet eu leo. Aenean bibendum risus leo, ac consequat urna gravida ut. Proin ut justo eget ligula tempor euismod. Sed nec dui at est tristique ultrices et eu massa.</p>
 <p>Suspendisse ut tempus nibh. Fusce placerat neque lacinia mi mattis hendrerit. Phasellus blandit sit amet nibh sed molestie. Praesent vulputate imperdiet mauris vitae lobortis. Interdum et malesuada fames ac ante ipsum primis in faucibus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Mauris in tellus lacinia, imperdiet diam sit amet, porta nisl. In vehicula in elit ac dignissim. Curabitur vehicula sollicitudin molestie. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec convallis non odio a commodo.</p>
 
-<script src="dist/superhero-button.styles.js"></script>
+<script src="dist/index.js"></script>
 <script>
 /*
 * Create superhero button instance by pointing element with its selector
 */
-superheroButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
-superheroButton('.small', { size: 'small', account: 'ak_... or .chain name' });
-superheroButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
+superheroUtils.createButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
+superheroUtils.createButton('.small', { size: 'small', account: 'ak_... or .chain name' });
+superheroUtils.createButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
 
 /*
 * Create superhero button instance by passing DOM element instance
 */
-superheroButton(document.querySelector('.large'), { size: 'large', account: 'ak_... or .chain name' });
+superheroUtils.createButton(document.querySelector('.large'), { size: 'large', account: 'ak_... or .chain name' });
 
 // Initialize button a.superhero-tip-button appears dynamically
 setTimeout(function() {
   var btn = document.createElement("div");
   document.body.appendChild(btn);
-  superheroButton(btn);
+  superheroUtils.createButton(btn);
 }, 5000);
 
 document.querySelector('.ensure-payed')
-    .addEventListener('click', () => superheroButton.ensurePayed());
+    .addEventListener('click', () => superheroUtils.ensurePayed());
 
 document.querySelector('.reset-payed-state')
     .addEventListener('click', () => delete localStorage['superhero-paywall-payed-urls']);

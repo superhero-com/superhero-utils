@@ -1,9 +1,9 @@
 {
-  "name": "@aeternity/superhero-button",
+  "name": "@aeternity/superhero-utils",
   "version": "0.3.0",
   "description": "",
-  "main": "dist/superhero-button.styles.js",
-  "browser": "dist/superhero-button.styles.js",
+  "main": "dist/index.js",
+  "browser": "dist/index.js",
   "dependencies": {},
   "files": [
     "dist",
@@ -35,12 +35,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aeternity/superhero-button.git"
+    "url": "git+https://github.com/aeternity/superhero-utils.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/aeternity/superhero-button/issues"
+    "url": "https://github.com/aeternity/superhero-utils/issues"
   },
-  "homepage": "https://github.com/aeternity/superhero-button#readme"
+  "homepage": "https://github.com/aeternity/superhero-utils#readme"
 }

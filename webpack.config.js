@@ -6,8 +6,7 @@ const genConfig = (filename, { inlineCss } = {}) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename,
-    library: 'superheroButton',
-    libraryExport: 'default',
+    library: 'superheroUtils',
     libraryTarget: 'umd'
   },
   target: 'web',
@@ -33,12 +32,12 @@ const genConfig = (filename, { inlineCss } = {}) => ({
     ]
   },
   plugins: [
-    ...inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'style.css' })],
+    ...inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'index.css' })],
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [] }),
   ],
 });
 
 module.exports = [
-  genConfig('superhero-button.js'),
-  genConfig('superhero-button.styles.js', { inlineCss: true }),
+  genConfig('index-without-styles.js'),
+  genConfig('index.js', { inlineCss: true }),
 ];
