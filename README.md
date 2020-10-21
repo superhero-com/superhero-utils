@@ -58,7 +58,7 @@ Size value | Screenshot
 `medium` | <img width="203" alt="medium" src="https://user-images.githubusercontent.com/13139371/81780936-0256c100-9500-11ea-960e-9256a941285d.png">
 `large` | <img width="140" alt="large" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
 
-### Paywall (`superheroUtils.ensurePayed`)
+### Paywall (`superheroUtils.ensurePaid`)
 This function asks the user to send a tip to the specified page. It won't ask to send a
 tip if it was sent before using the current browser. The function accepts options object.
 
@@ -70,7 +70,7 @@ Option | Description
 
 ```html
 <script type="text/javascript">
-  superheroUtils.ensurePayed({ url: 'https://example.com' });
+  superheroUtils.ensurePaid({ url: 'https://example.com' });
 </script>
 ```
 Additional examples can be found [here](./index.html).
