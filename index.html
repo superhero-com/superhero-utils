@@ -4,8 +4,8 @@
 <div class="large">Donate</div>
 
 <hr>
-<button class="ensure-payed">Ensure payed</button>
-<button class="reset-payed-state">Reset payed state</button>
+<button class="ensure-paid">Ensure paid</button>
+<button class="reset-paid-state">Reset paid state</button>
 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum in ligula sit amet libero blandit laoreet luctus scelerisque eros. Donec nunc tortor, condimentum eu imperdiet ac, ornare ac leo. Nullam non nulla non massa hendrerit tempus. Donec imperdiet euismod lacus eu commodo. In pellentesque ipsum sed mi iaculis vestibulum. Mauris quis blandit est. Ut lacinia quam sit amet dapibus pellentesque. Donec pretium at erat sed elementum.</p>
 <p>Cras vitae erat at sapien pretium scelerisque at a odio. Aenean pulvinar tellus sit amet posuere porta. Sed vel efficitur nisl, a sollicitudin enim. Quisque eu velit id leo interdum ultrices. Nam vulputate lectus nec neque efficitur lobortis. In vehicula leo id ligula varius, ac lobortis lorem dictum. Proin dignissim lobortis massa, non facilisis nisi auctor vel. Praesent eget molestie mauris, vel vehicula velit. In hac habitasse platea dictumst. Aenean molestie blandit pulvinar.</p>
 <p>Vestibulum finibus sagittis nulla nec scelerisque. Duis libero dui, viverra vitae ipsum sit amet, congue lacinia lorem. Etiam porta quis nisi ut consequat. In hac habitasse platea dictumst. Nunc dapibus condimentum tempor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse non erat vitae velit semper elementum. Donec eleifend dictum dui, in ultrices nisi lobortis id. Integer sit amet luctus mauris. Vivamus a lacus non augue pulvinar dapibus in a neque. Morbi semper convallis justo quis aliquam. Cras at blandit felis, at porta magna. Maecenas egestas purus purus, vel fringilla massa iaculis eu. In at eleifend quam. Nulla vitae metus ex. Nunc eu augue ut sem tincidunt volutpat vitae ac orci.</p>
@@ -43,9 +43,9 @@ setTimeout(function() {
   superheroUtils.createButton(btn);
 }, 5000);
 
-document.querySelector('.ensure-payed')
-    .addEventListener('click', () => superheroUtils.ensurePayed());
+document.querySelector('.ensure-paid')
+    .addEventListener('click', () => superheroUtils.ensurePaid());
 
-document.querySelector('.reset-payed-state')
-    .addEventListener('click', () => delete localStorage['superhero-paywall-payed-urls']);
+document.querySelector('.reset-paid-state')
+    .addEventListener('click', () => delete localStorage['superhero-paywall-paid-urls']);
 </script>

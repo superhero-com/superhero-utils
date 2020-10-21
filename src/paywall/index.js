@@ -1,7 +1,7 @@
-import './index.scss';
 import createButton from '../button';
+import './index.scss';
 
-const localStorageKey = 'superhero-paywall-payed-urls';
+const localStorageKey = 'superhero-paywall-paid-urls';
 const urlResult = 'superhero-paywall-tip-result';
 const urlParamSuccess = 'success';
 
@@ -11,18 +11,18 @@ const removeWalletResponse = url => {
   return u.toString();
 }
 
-const getPayedUrls = () => localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
+const getPaidUrls = () => localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
 
-const markUrlAsPayed = (url) => {
-  const payedUrls = getPayedUrls();
-  if (payedUrls.includes(url)) return;
-  payedUrls.push(url);
-  localStorage[localStorageKey] = JSON.stringify(payedUrls);
+const markUrlAsPaid = (url) => {
+  const paidUrls = getPaidUrls();
+  if (paidUrls.includes(url)) return;
+  paidUrls.push(url);
+  localStorage[localStorageKey] = JSON.stringify(paidUrls);
 }
 
 export default async ({ url = removeWalletResponse(window.location.href) } = {}) => {
-  if (new URL(window.location).searchParams.get(urlResult) === urlParamSuccess) markUrlAsPayed(url);
-  if (getPayedUrls().includes(url)) return;
+  if (new URL(window.location).searchParams.get(urlResult) === urlParamSuccess) markUrlAsPaid(url);
+  if (getPaidUrls().includes(url)) return;
 
   const overlay = document.createElement('div');
   overlay.className = 'superhero-utils-paywall';
