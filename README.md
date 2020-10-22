@@ -53,9 +53,9 @@ Additional examples can be found [here](./index.html).
 
 Size value | Screenshot
 --- | ---
-`icon` | <img width="49" alt="icon" src="https://user-images.githubusercontent.com/13139371/81780948-04b91b00-9500-11ea-9a50-3f483613dca0.png">
+`icon` | <img width="42" alt="icon" src="https://user-images.githubusercontent.com/13139371/96836940-57ebae00-144e-11eb-84f8-3a25e1e5da92.png">
 `small` | <img width="142" alt="small" src="https://user-images.githubusercontent.com/13139371/81780933-01259400-9500-11ea-8d84-a2624b43edec.png">
-`medium` | <img width="203" alt="medium" src="https://user-images.githubusercontent.com/13139371/81780936-0256c100-9500-11ea-960e-9256a941285d.png">
+`medium` | <img width="189" alt="medium" src="https://user-images.githubusercontent.com/13139371/96836937-56ba8100-144e-11eb-9e3b-4e4c92b9bbb4.png">
 `large` | <img width="140" alt="large" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
 
 ### Paywall (`superheroUtils.ensurePaid`)
