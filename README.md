@@ -11,7 +11,7 @@ You can get it as npm package or from the unpkg.com.
 ### With unpkg.com and `<script>` tag
 Add this to your website's HTML:
 ```html
-<script src="https://unpkg.com/@aeternity/superhero-utils/dist/index.js"></script>
+<script src="https://unpkg.com/@aeternity/superhero-utils@0.5.0/dist/index.js"></script>
 ```
 This will define `superheroUtils` in the global scope.
 
