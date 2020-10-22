@@ -1,5 +1,5 @@
-import createButton from '../button';
 import './index.scss';
+import createButton from '../button';
 
 const localStorageKey = 'superhero-paywall-paid-urls';
 const urlResult = 'superhero-paywall-tip-result';
