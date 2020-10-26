@@ -4,7 +4,6 @@
   "description": "",
   "main": "dist/index.js",
   "browser": "dist/index.js",
-  "dependencies": {},
   "files": [
     "dist",
     "src"
@@ -26,6 +25,10 @@
     "url-loader": "^4.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
+  },
+  "optionalDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

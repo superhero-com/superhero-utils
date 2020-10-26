@@ -22,6 +22,9 @@ all, and write your own instead.
 
 ## Usage
 
+- [Plain JavaScript](#.button-(%60superheroUtils.createButton%60))
+- [React.js](#.reactjs-component)
+
 ### Button (`superheroUtils.createButton`)
 This library exports a function that creates buttons. This function accepts arguments:
 - class name of nodes that should become buttons, or the DOM node itself
@@ -78,6 +81,19 @@ Additional examples can be found [here](./index.html).
 #### Screenshots
 
 <img width="607" alt="Paywall" src="https://user-images.githubusercontent.com/9007851/95088220-58d0d000-072b-11eb-8cd6-57052d40765c.png">
+
+## React.js component
+
+### Usage with ES6
+
+Props the same with [plain js vesrion](#Button-(`superheroUtils.createButton`)).
+
+#### Example: 
+```js
+import Button from '@aeternity/superhero-utils/button-react';
+
+<Button size="icon" account="example.chain">
+```
 
 ## Start the project for development
 

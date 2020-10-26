@@ -2,14 +2,21 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const genConfig = (filename, { inlineCss } = {}) => ({
+const genConfig = (outputFilename, { inlineCss, inputName = 'index.js' } = {}) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename,
+    filename: outputFilename,
     library: 'superheroUtils',
     libraryTarget: 'umd'
   },
+  entry: {
+    entry: `./src/${inputName}`,
+  },
   target: 'web',
+  externals: {
+    'prop-types': 'prop-types',
+    'react': 'react'
+  },
   module: {
     rules: [
       {
@@ -40,4 +47,5 @@ const genConfig = (filename, { inlineCss } = {}) => ({
 module.exports = [
   genConfig('index-without-styles.js'),
   genConfig('index.js', { inlineCss: true }),
+  genConfig('button-react.js', { inputName: 'button-react.js'}),
 ];
