@@ -22,8 +22,8 @@ all, and write your own instead.
 
 ## Usage
 
-- [Plain JavaScript](#.button-(%60superheroUtils.createButton%60))
-- [React.js](#.reactjs-component)
+- [Plain JavaScript](#button-superheroutilscreatebutton)
+- [React.js](#reactjs-component)
 
 ### Button (`superheroUtils.createButton`)
 This library exports a function that creates buttons. This function accepts arguments:
@@ -86,7 +86,7 @@ Additional examples can be found [here](./index.html).
 
 ### Usage with ES6
 
-Props the same with [plain js vesrion](#Button-(`superheroUtils.createButton`)).
+Props the same with [plain js vesrion](##button-superheroutilscreatebutton).
 
 #### Example: 
 ```js
