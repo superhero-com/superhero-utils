@@ -9,9 +9,7 @@ const genConfig = (outputFilename, { inlineCss, inputFilename = 'index.js' } = {
     library: 'superheroUtils',
     libraryTarget: 'umd'
   },
-  entry: {
-    entry: `./src/${inputFilename}`,
-  },
+  entry: `./src/${inputFilename}`,
   target: 'web',
   externals: {
     'prop-types': 'prop-types',
