@@ -1,5 +1,5 @@
 import './index.scss';
-import icon from '../img/v1-icon.png';
+import icon from '../img/icon.svg';
 
 const genTipDeeplink = ({ url, ...params }) => {
   const u = new URL('https://wallet.superhero.com/tip');
