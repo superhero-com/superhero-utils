@@ -47,7 +47,7 @@ Option | Description
 </script>
 ```
 Select the button style you like the most and adopt this code to your website's HTML.
-Additional examples can be found [here](./index.html).
+Additional examples can be found [here](examples/index.html).
 
 #### Screenshots
 
@@ -73,7 +73,7 @@ Option | Description
   superheroUtils.ensurePaid({ url: 'https://example.com' });
 </script>
 ```
-Additional examples can be found [here](./index.html).
+Additional examples can be found [here](examples/index.html).
 
 #### Screenshots
 
