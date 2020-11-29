@@ -1,21 +1,34 @@
 @use '../variables';
 
 .superhero-utils-button {
-  padding: 0;
-  border: none;
-  background: transparent;
-  display: inline-block;
+  display: inline-flex;
   font-family: variables.$font-family;
 
+  a {
+    background: variables.$background-color;
+    color: #fff;
+    border-radius: variables.$border-radius;
+    font-weight: 700;
+    text-decoration: none;
+
+    img {
+      height: 22px;
+    }
+
+    span {
+      margin-left: 4px;
+    }
+
+    img,
+    span {
+      vertical-align: middle;
+    }
+  }
+
   .tips-amount {
-    font-size: 32px;
-    line-height: 22px;
     position: relative;
-    text-align: center;
-    padding: 19px 0;
     border: variables.$border;
     border-radius: variables.$border-radius;
-    margin-bottom: 14px;
     background-color: #fff;
     color: black;
 
@@ -25,123 +38,91 @@
 
     &:after {
       content: '';
-      width: 12px;
-      height: 12px;
       position: absolute;
-      bottom: -7.2px;
-      left: 50%;
       background: #fff;
-      border-left: variables.$border;
-      border-bottom: variables.$border;
-      transform: translateX(-50%) rotate(-45deg);
-      -webkit-transform: translateX(-50%) rotate(-45deg);
-      -ms-transform: translateX(-50%) rotate(-45deg);
     }
   }
 
-  a {
-    background: variables.$background-color;
-    color: #fff;
-    border: none;
-    outline: none;
-    padding: 10px 16px 10px 13px;
-    border-radius: variables.$border-radius;
-    font-size: 15px;
-    font-weight: 700;
-    line-height: 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    text-decoration: none;
-
-    img {
-      height: 21px;
-    }
-
-    span {
-      margin-left: 7px;
-    }
+  &.icon a {
+    width: 40px;
+    padding: 9px 0;
+    text-align: center;
   }
 
-  /**
-  * Other sizes styles
-  */
-  &.medium,
-  &.small {
-    display: inline-flex;
-    align-items: stretch;
-
-    .tips-amount:after {
-      transform: translateY(-50%) rotate(-45deg);
-      -webkit-transform: translateY(-50%) rotate(-45deg);
-      -ms-transform: translateY(-50%) rotate(-45deg);
-      border: none;
-      border-left: 1px solid #babac0;
-      border-top: 1px solid #babac0;
-      bottom: auto;
-    }
-  }
-
-  /**
-  * Medium size
-  */
+  &.small,
   &.medium {
     .tips-amount {
-      display: inline-block;
-      font-size: 15px;
-      padding: 11px 10px;
-      margin-bottom: 0;
       margin-left: 15px;
-      line-height: 17px;
 
       &:after {
-        width: 9px;
-        height: 9px;
         left: -6px;
         top: 50%;
+        width: 9px;
+        height: 9px;
+        border-left: variables.$border;
+        border-top: variables.$border;
+        transform: translateY(-50%) rotate(-45deg);
+        -webkit-transform: translateY(-50%) rotate(-45deg);
+        -ms-transform: translateY(-50%) rotate(-45deg);
       }
     }
   }
 
-  /**
-  * Small size
-  */
   &.small {
-    .tips-amount {
-      display: inline-block;
-      font-size: 13px;
-      line-height: 13px;
-      padding: 8px 5px;
-      margin-bottom: 0;
-      margin-left: 15px;
-
-      &:after {
-        width: 9px;
-        height: 9px;
-        left: -6px;
-        top: 50%;
-      }
-    }
+    font-size: 13px;
 
     a {
-      font-size: 13px;
-      padding: 7px 13px 7px 8px;
+      padding: 0 13px 0 8px;
+      height: 34px;
+      line-height: 34px;
 
       img {
         height: 14px;
       }
     }
+
+    .tips-amount {
+      padding: 0 5px;
+      line-height: 32px;
+    }
   }
 
-  /**
-  * Icon size
-  */
-  &.icon {
-    width: 40px;
-    height: 40px;
-
+  &.medium,
+  &.large {
     a {
-      padding: 9px 7px;
+      padding: 0 16px 0 13px;
+      font-size: 15px;
+      line-height: 40px;
+      height: 40px;
+    }
+  }
+
+  &.medium .tips-amount {
+    padding: 0 10px;
+    font-size: 15px;
+    line-height: 38px;
+  }
+
+  &.large {
+    flex-direction: column;
+    text-align: center;
+
+    .tips-amount {
+      margin-bottom: 14px;
+      font-size: 32px;
+      line-height: 60px;
+
+      &:after {
+        bottom: -7.2px;
+        left: 50%;
+        width: 12px;
+        height: 12px;
+        border-left: variables.$border;
+        border-bottom: variables.$border;
+        transform: translateX(-50%) rotate(-45deg);
+        -webkit-transform: translateX(-50%) rotate(-45deg);
+        -ms-transform: translateX(-50%) rotate(-45deg);
+      }
     }
   }
 }
