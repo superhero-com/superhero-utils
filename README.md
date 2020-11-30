@@ -53,10 +53,10 @@ Additional examples can be found [here](./index.html).
 
 Size value | Screenshot
 --- | ---
-`icon` | <img width="42" alt="icon" src="https://user-images.githubusercontent.com/13139371/96836940-57ebae00-144e-11eb-84f8-3a25e1e5da92.png">
-`small` | <img width="142" alt="small" src="https://user-images.githubusercontent.com/13139371/81780933-01259400-9500-11ea-8d84-a2624b43edec.png">
-`medium` | <img width="189" alt="medium" src="https://user-images.githubusercontent.com/13139371/96836937-56ba8100-144e-11eb-9e3b-4e4c92b9bbb4.png">
-`large` | <img width="140" alt="large" src="https://user-images.githubusercontent.com/13139371/81780943-0387ee00-9500-11ea-8108-2e5939821a7b.png">
+`icon` | <img width="40" alt="icon" src="https://user-images.githubusercontent.com/9007851/100574757-c3495b00-32eb-11eb-8625-c10c20d26b46.png">
+`small` | <img width="143" alt="small" src="https://user-images.githubusercontent.com/9007851/100574756-c2b0c480-32eb-11eb-8f33-c648ac2f5d53.png">
+`medium` | <img width="216" alt="medium" src="https://user-images.githubusercontent.com/9007851/100574755-c2b0c480-32eb-11eb-9c1e-258d9282112e.png">
+`large` | <img width="148" alt="large" src="https://user-images.githubusercontent.com/9007851/100574754-c2182e00-32eb-11eb-8fb0-281d73d9a75a.png">
 
 ### Paywall (`superheroUtils.ensurePaid`)
 This function asks the user to send a tip to the specified page. It won't ask to send a
@@ -77,7 +77,7 @@ Additional examples can be found [here](./index.html).
 
 #### Screenshots
 
-<img width="607" alt="Paywall" src="https://user-images.githubusercontent.com/9007851/95088220-58d0d000-072b-11eb-8cd6-57052d40765c.png">
+<img width="607" alt="Paywall" src="https://user-images.githubusercontent.com/9007851/100574723-b2004e80-32eb-11eb-99b7-765869e665b9.png">
 
 ## Start the project for development
 
