@@ -20,7 +20,7 @@ const getTipAmount = async (url) => {
   return tips.find(u => u.url === url)?.total_amount_ae || 0;
 };
 
-const createButtonInstance = ({ size = 'icon', url = window.location.href, account, ...options }) => {
+export const createButtonByDiv = (divElement, { size = 'icon', url = window.location.href, account, ...options }) => {
   // data-account attribute is needed claiming
   const genLink = (text = '') => `
     <a
@@ -45,16 +45,15 @@ const createButtonInstance = ({ size = 'icon', url = window.location.href, accou
   };
 
   if (!templates[size]) throw new Error('Unsupported size');
-  const button = document.createElement('div');
-  button.innerHTML = templates[size];
-  button.className = `superhero-utils-button ${size}`;
+  divElement.innerHTML = templates[size];
+  divElement.className = `superhero-utils-button ${size}`;
 
   (async () => {
-    const tipsEl = button.querySelector('.tips');
+    const tipsEl = divElement.querySelector('.tips');
     if (tipsEl) tipsEl.innerHTML = await getTipAmount(url);
   })();
 
-  return button;
+  return divElement;
 };
 
 export default (selectorOrElement, options = {}) => {
@@ -63,7 +62,7 @@ export default (selectorOrElement, options = {}) => {
     : selectorOrElement;
 
   const handleElement = element => {
-    const instance = createButtonInstance(options);
+    const instance = createButtonByDiv(document.createElement('div'), options);
     element.replaceWith(instance);
     return instance;
   };
