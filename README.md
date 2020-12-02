@@ -21,7 +21,7 @@ You can import and process styles manually by importing `dist/index.css` and
 all, and write your own instead.
 
 ### React and Vue versions
-By default `dist/index.js` is imported, instead of this, you can import a specific
+By default `dist/index.js` is imported, instead of it, you can import a specific
 version for React or Vue by importing `dist/react-without-styles.js` or
 `dist/vue-without-styles.js` accordingly. The framework-specific version contains
 all features available in the default one plus specific for particular framework wrappers.
