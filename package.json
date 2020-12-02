@@ -27,10 +27,15 @@
     "webpack": "^5.9.0",
     "webpack-cli": "^4.2.0"
   },
+  "optionalDependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build && serve",
+    "start": "npm run build && npm run build:examples && serve examples",
     "build": "webpack",
+    "build:examples": "npm run --prefix examples/react-webpack build && npm run --prefix examples/vue-webpack build",
     "watch": "webpack --watch"
   },
   "repository": {

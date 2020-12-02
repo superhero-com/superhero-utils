@@ -2,14 +2,29 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const genConfig = (filename, { inlineCss } = {}) => ({
+const genConfig = (name, { inlineCss } = {}) => ({
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename,
+    filename: `${name}${inlineCss ? '' : '-without-styles'}.js`,
     library: 'superheroUtils',
     libraryTarget: 'umd'
   },
+  entry: path.resolve(__dirname, 'src', `${name}.js`),
   target: 'web',
+  externals: {
+    'prop-types': {
+      commonjs: 'prop-types',
+      commonjs2: 'prop-types',
+      amd: 'prop-types',
+      root: 'PropTypes',
+    },
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
+      root: 'React',
+    },
+  },
   module: {
     rules: [
       {
@@ -38,6 +53,8 @@ const genConfig = (filename, { inlineCss } = {}) => ({
 });
 
 module.exports = [
-  genConfig('index-without-styles.js'),
-  genConfig('index.js', { inlineCss: true }),
+  genConfig('index'),
+  genConfig('index', { inlineCss: true }),
+  genConfig('react'),
+  genConfig('vue'),
 ];
