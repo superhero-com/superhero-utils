@@ -110,6 +110,8 @@ You need to install [Node.js](https://nodejs.org/) firstly.
 
 ```sh
 $ npm install
+$ npm install --prefix examples/react-webpack
+$ npm install --prefix examples/vue-webpack
 $ npm start
 ```
 
