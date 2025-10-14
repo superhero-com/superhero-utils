@@ -18,6 +18,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "mini-css-extract-plugin": "^1.3.1",
+    "prettier": "^3.6.2",
     "regenerator-runtime": "^0.13.7",
     "sass": "^1.29.0",
     "sass-loader": "^10.1.0",
@@ -33,6 +34,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "format": "prettier --write .",
+    "lint": "prettier --check .",
     "start": "npm run build && npm run build:examples && serve examples",
     "build": "webpack",
     "build:examples": "npm run --prefix examples/react-webpack build && npm run --prefix examples/vue-webpack build",
