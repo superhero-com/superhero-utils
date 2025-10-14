@@ -1,7 +1,6 @@
 # Superhero Utils
 
 ## Installation
-
 You can get it as npm package or from the unpkg.com.
 
 ### With npm
@@ -25,6 +24,20 @@ By default `dist/index.js` is imported, instead of it, you can import a specific
 version for React or Vue by importing `dist/react-without-styles.js` or
 `dist/vue-without-styles.js` accordingly. The framework-specific version contains
 all features available in the default one plus specific for particular framework wrappers.
+
+### Develop
+Install:
+```
+npm i
+npm i --prefix examples/react-webpack
+npm i --prefix examples/vue-webpack
+```
+
+Build scripts:
+```
+npm run build
+npm run build:examples
+```
 
 ## Usage
 
