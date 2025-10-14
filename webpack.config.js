@@ -3,6 +3,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const genConfig = (name, { inlineCss } = {}) => ({
+  mode: 'production',
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: `${name}${inlineCss ? '' : '-without-styles'}.js`,
