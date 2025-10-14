@@ -2,21 +2,21 @@
 
 <script src="https://unpkg.com/vue@2.6.12/dist/vue.min.js"></script>
 <script src="./superhero-utils/vue-without-styles.js"></script>
-<link rel="stylesheet" href="./superhero-utils/index.css">
+<link rel="stylesheet" href="./superhero-utils/index.css" />
 <script>
-const App = {
-  components: {
-    SuperheroButton: superheroUtils.Button,
-  },
-  template: `
+  const App = {
+    components: {
+      SuperheroButton: superheroUtils.Button,
+    },
+    template: `
     <div>
       <h3>superhero-utils example using vue, script tag</h3>
       <SuperheroButton size="medium" account="ak_... or .chain name" />
     </div>
   `,
-};
+  };
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app');
+  new Vue({
+    render: (h) => h(App),
+  }).$mount('#app');
 </script>

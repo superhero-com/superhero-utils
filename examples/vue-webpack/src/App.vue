@@ -13,5 +13,5 @@ export default {
   components: {
     SuperheroButton: Button,
   },
-}
+};
 </script>

@@ -5,20 +5,21 @@ const localStorageKey = 'superhero-paywall-paid-urls';
 const urlResult = 'superhero-paywall-tip-result';
 const urlParamSuccess = 'success';
 
-const removeWalletResponse = url => {
+const removeWalletResponse = (url) => {
   const u = new URL(url);
   u.searchParams.delete(urlResult);
   return u.toString();
-}
+};
 
-const getPaidUrls = () => localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
+const getPaidUrls = () =>
+  localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
 
 const markUrlAsPaid = (url) => {
   const paidUrls = getPaidUrls();
   if (paidUrls.includes(url)) return;
   paidUrls.push(url);
   localStorage[localStorageKey] = JSON.stringify(paidUrls);
-}
+};
 
 export default async ({ url = removeWalletResponse(window.location.href) } = {}) => {
   if (new URL(window.location).searchParams.get(urlResult) === urlParamSuccess) markUrlAsPaid(url);

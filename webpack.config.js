@@ -7,7 +7,7 @@ const genConfig = (name, { inlineCss } = {}) => ({
     path: path.resolve(__dirname, 'dist'),
     filename: `${name}${inlineCss ? '' : '-without-styles'}.js`,
     library: 'superheroUtils',
-    libraryTarget: 'umd'
+    libraryTarget: 'umd',
   },
   entry: path.resolve(__dirname, 'src', `${name}.js`),
   target: 'web',
@@ -30,7 +30,7 @@ const genConfig = (name, { inlineCss } = {}) => ({
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.scss$/,
@@ -44,10 +44,10 @@ const genConfig = (name, { inlineCss } = {}) => ({
         test: /\.(png|jpg|gif|svg)$/,
         use: 'url-loader',
       },
-    ]
+    ],
   },
   plugins: [
-    ...inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'index.css' })],
+    ...(inlineCss ? [] : [new MiniCssExtractPlugin({ filename: 'index.css' })]),
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: [] }),
   ],
 });

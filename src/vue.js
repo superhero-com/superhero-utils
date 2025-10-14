@@ -4,7 +4,7 @@ import { createButtonByDiv } from './index';
 export const Button = {
   props: {
     size: {
-      validator: value => ['icon', 'small', 'medium', 'large'].includes(value),
+      validator: (value) => ['icon', 'small', 'medium', 'large'].includes(value),
       default: undefined,
     },
     url: { type: String, default: undefined },

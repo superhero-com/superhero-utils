@@ -17,10 +17,13 @@ const getTipAmount = async (url) => {
   if (!tips) {
     tips = (await (await fetch('https://raendom-backend.z52da5wt.xyz/cache/stats')).json()).by_url;
   }
-  return tips.find(u => u.url === url)?.total_amount_ae || 0;
+  return tips.find((u) => u.url === url)?.total_amount_ae || 0;
 };
 
-export const createButtonByDiv = (divElement, { size = 'icon', url = window.location.href, account, ...options }) => {
+export const createButtonByDiv = (
+  divElement,
+  { size = 'icon', url = window.location.href, account, ...options },
+) => {
   // data-account attribute is needed claiming
   const genLink = (text = '') => `
     <a
@@ -57,11 +60,12 @@ export const createButtonByDiv = (divElement, { size = 'icon', url = window.loca
 };
 
 export default (selectorOrElement, options = {}) => {
-  const element = typeof selectorOrElement === 'string'
-    ? document.querySelectorAll(selectorOrElement)
-    : selectorOrElement;
+  const element =
+    typeof selectorOrElement === 'string'
+      ? document.querySelectorAll(selectorOrElement)
+      : selectorOrElement;
 
-  const handleElement = element => {
+  const handleElement = (element) => {
     const instance = createButtonByDiv(document.createElement('div'), options);
     element.replaceWith(instance);
     return instance;

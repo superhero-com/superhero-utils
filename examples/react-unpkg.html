@@ -4,19 +4,19 @@
 <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js"></script>
 <script src="https://unpkg.com/prop-types@15/prop-types.min.js"></script>
 <script src="./superhero-utils/react-without-styles.js"></script>
-<link rel="stylesheet" href="./superhero-utils/index.css">
+<link rel="stylesheet" href="./superhero-utils/index.css" />
 <script>
-class App extends React.Component {
-  render() {
-    return React.createElement('div', {}, [
-      React.createElement('h3', {}, ['superhero-utils example using react, script tag']),
-      React.createElement(
-        superheroUtils.Button,
-        { size: 'medium', account: 'ak_... or .chain name' },
-      ),
-    ]);
+  class App extends React.Component {
+    render() {
+      return React.createElement('div', {}, [
+        React.createElement('h3', {}, ['superhero-utils example using react, script tag']),
+        React.createElement(superheroUtils.Button, {
+          size: 'medium',
+          account: 'ak_... or .chain name',
+        }),
+      ]);
+    }
   }
-}
 
-ReactDOM.render(React.createElement(App), document.querySelector('#app'));
+  ReactDOM.render(React.createElement(App), document.querySelector('#app'));
 </script>
