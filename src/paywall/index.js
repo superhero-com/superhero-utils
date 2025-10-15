@@ -1,29 +1,24 @@
 import './index.scss';
 import createButton from '../button';
 
-const localStorageKey = 'superhero-paywall-paid-urls';
+const localStorageKey = 'superhero-paywall-paid-targets';
 const urlResult = 'superhero-paywall-tip-result';
 const urlParamSuccess = 'success';
 
-const removeWalletResponse = (url) => {
-  const u = new URL(url);
-  u.searchParams.delete(urlResult);
-  return u.toString();
-};
-
-const getPaidUrls = () =>
+const getPaidTargets = () =>
   localStorage[localStorageKey] ? JSON.parse(localStorage[localStorageKey]) : [];
 
-const markUrlAsPaid = (url) => {
-  const paidUrls = getPaidUrls();
-  if (paidUrls.includes(url)) return;
-  paidUrls.push(url);
-  localStorage[localStorageKey] = JSON.stringify(paidUrls);
+const markTargetAsPaid = (target) => {
+  const paidTargets = getPaidTargets();
+  if (paidTargets.includes(target)) return;
+  paidTargets.push(target);
+  localStorage[localStorageKey] = JSON.stringify(paidTargets);
 };
 
-export default async ({ url = removeWalletResponse(window.location.href) } = {}) => {
-  if (new URL(window.location).searchParams.get(urlResult) === urlParamSuccess) markUrlAsPaid(url);
-  if (getPaidUrls().includes(url)) return;
+export default async (target) => {
+  if (new URL(window.location).searchParams.get(urlResult) === urlParamSuccess)
+    markTargetAsPaid(target);
+  if (getPaidTargets().includes(target)) return;
 
   const overlay = document.createElement('div');
   overlay.className = 'superhero-utils-paywall';
@@ -35,11 +30,10 @@ export default async ({ url = removeWalletResponse(window.location.href) } = {})
     </div>
   `;
 
-  const successUrl = new URL(url);
+  const successUrl = new URL(window.location.href);
   successUrl.searchParams.set(urlResult, urlParamSuccess);
-  createButton(overlay.querySelector('.button'), {
+  createButton(overlay.querySelector('.button'), target, {
     size: 'small',
-    url,
     'x-success': successUrl,
   });
 

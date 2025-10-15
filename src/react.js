@@ -7,8 +7,10 @@ export class Button extends React.Component {
   constructor(props) {
     super(props);
     this.button = React.createRef();
-    this.componentDidMount = this.componentDidUpdate = () =>
-      createButtonByDiv(this.button.current, this.props);
+    this.componentDidMount = this.componentDidUpdate = () => {
+      const { target, ...props } = this.props;
+      createButtonByDiv(this.button.current, target, props);
+    };
   }
 
   render() {
@@ -18,6 +20,5 @@ export class Button extends React.Component {
 
 Button.propTypes = {
   size: PropTypes.oneOf(['icon', 'small', 'medium', 'large']),
-  url: PropTypes.string,
-  account: PropTypes.string,
+  target: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

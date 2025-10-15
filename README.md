@@ -41,23 +41,20 @@ all features available in the default one plus specific for particular framework
 This library exports a function that creates buttons. This function accepts arguments:
 
 - class name of nodes that should become buttons, or the DOM node itself
+- a target: account public key, name ending with .chain, or an ID of the post on [superhero.com](https://superhero.com/)
 - options object
 
-| Option    | Description                                                                                               |
-| --------- | --------------------------------------------------------------------------------------------------------- |
-| `size`    | Default `icon`. Possible values `icon`, `large`, `medium`, `small`. See the screenshots section below.    |
-| `account` | Optional. When set you can easily claim your tips. Accepts account public key or name ending with .chain. |
-| `url`     | Optional. Url to be tipped. Default is set to the current page url.                                       |
+| Option | Description                                                                                            |
+| ------ | ------------------------------------------------------------------------------------------------------ |
+| `size` | Default `icon`. Possible values `icon`, `large`, `medium`, `small`. See the screenshots section below. |
 
 #### Example
 
 ```html
 <div class="my-button">Donate</div>
 <script type="text/javascript">
-  superheroUtils.createButton('.my-button', {
+  superheroUtils.createButton('.my-button', 'example.chain', {
     size: 'large',
-    account: 'example.chain',
-    url: 'https://example.com',
   });
 </script>
 ```
@@ -89,23 +86,21 @@ properties as [`superheroUtils.createButton`](#superheroutilscreatebutton)'s opt
 #### Example
 
 ```html
-<button size="large" account="example.chain" url="https://example.com" />
+<button size="large" account="example.chain" />
 ```
 
 ### Paywall (`superheroUtils.ensurePaid`)
 
-This function asks the user to send a tip to the specified page. It won't ask to send a
-tip if it was sent before using the current browser. The function accepts options object.
+This function asks the user to send a tip to the specified target. It won't ask to send a
+tip if it was sent before using the current browser. This function accepts arguments:
 
-| Option | Description                                                                      |
-| ------ | -------------------------------------------------------------------------------- |
-| `url`  | Optional. Url to be required to pay for. Default is set to the current page url. |
+- a target: account public key, name ending with .chain, or an ID of the post on [superhero.com](https://superhero.com/)
 
 #### Example
 
 ```html
 <script type="text/javascript">
-  superheroUtils.ensurePaid({ url: 'https://example.com' });
+  superheroUtils.ensurePaid('example.chain');
 </script>
 ```
 

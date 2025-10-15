@@ -5,7 +5,10 @@ function App() {
   return (
     <div>
       <h3>superhero-utils example using react, webpack</h3>
-      <SuperheroButton size="medium" account="ak_... or .chain name" />
+      <SuperheroButton
+        size="medium"
+        target="ak_gvxNbZf5CuxYVfcUFoKAP4geZatWaC2Yy4jpx5vZoCKank4Gc"
+      />
     </div>
   );
 }

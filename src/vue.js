@@ -7,13 +7,12 @@ export const Button = {
       validator: (value) => ['icon', 'small', 'medium', 'large'].includes(value),
       default: undefined,
     },
-    url: { type: String, default: undefined },
-    account: { type: String, default: undefined },
+    target: { type: [String, Number] },
   },
   mounted() {
     this.$watch(
-      ({ size, url, account }) => ({ size, url, account }),
-      (props) => createButtonByDiv(this.$refs.button, props),
+      ({ size, target }) => ({ size, target }),
+      ({ target, ...props }) => createButtonByDiv(this.$refs.button, target, props),
       { immediate: true },
     );
   },

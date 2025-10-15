@@ -131,33 +131,32 @@ Other examples:
 
 <script src="./superhero-utils/index.js"></script>
 <script>
+  const target = 'ak_gvxNbZf5CuxYVfcUFoKAP4geZatWaC2Yy4jpx5vZoCKank4Gc';
+
   /*
    * Create superhero button instance by pointing element with its selector
    */
-  superheroUtils.createButton('.icon', { size: 'icon', account: 'ak_... or .chain name' });
-  superheroUtils.createButton('.small', { size: 'small', account: 'ak_... or .chain name' });
-  superheroUtils.createButton('.medium', { size: 'medium', account: 'ak_... or .chain name' });
+  superheroUtils.createButton('.icon', target, { size: 'icon' });
+  superheroUtils.createButton('.small', 2707, { size: 'small' });
+  superheroUtils.createButton('.medium', 'nancyismyname.chain', { size: 'medium' });
 
   /*
    * Create superhero button instance by passing DOM element instance
    */
-  superheroUtils.createButton(document.querySelector('.large'), {
-    size: 'large',
-    account: 'ak_... or .chain name',
-  });
+  superheroUtils.createButton(document.querySelector('.large'), target, { size: 'large' });
 
   // Initialize button a.superhero-tip-button appears dynamically
   setTimeout(function () {
     var btn = document.createElement('div');
     document.body.appendChild(btn);
-    superheroUtils.createButton(btn);
+    superheroUtils.createButton(btn, target);
   }, 5000);
 
   document
     .querySelector('.ensure-paid')
-    .addEventListener('click', () => superheroUtils.ensurePaid());
+    .addEventListener('click', () => superheroUtils.ensurePaid(target));
 
   document
     .querySelector('.reset-paid-state')
-    .addEventListener('click', () => delete localStorage['superhero-paywall-paid-urls']);
+    .addEventListener('click', () => delete localStorage['superhero-paywall-paid-targets']);
 </script>
