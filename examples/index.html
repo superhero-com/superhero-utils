@@ -6,10 +6,20 @@ Other examples:
 <a href="./vue-vite/dist/">vue vite</a>
 
 <hr />
-<div class="icon">Donate</div>
-<div class="small">Donate</div>
-<div class="medium">Donate</div>
-<div class="large">Donate</div>
+
+<link rel="stylesheet" href="./superhero-utils/index.css" />
+<link rel="module" href="./superhero-utils/index-without-styles.js" />
+
+<superhero-button
+  target="ak_gvxNbZf5CuxYVfcUFoKAP4geZatWaC2Yy4jpx5vZoCKank4Gc"
+  size="icon"
+></superhero-button>
+<superhero-button target="2707" size="small"></superhero-button>
+<superhero-button target="nancyismyname.chain" size="medium"></superhero-button>
+<superhero-button
+  target="ak_gvxNbZf5CuxYVfcUFoKAP4geZatWaC2Yy4jpx5vZoCKank4Gc"
+  size="large"
+></superhero-button>
 
 <hr />
 <button class="ensure-paid">Ensure paid</button>
@@ -129,34 +139,19 @@ Other examples:
   senectus et netus et malesuada fames ac turpis egestas. Donec convallis non odio a commodo.
 </p>
 
-<link rel="stylesheet" href="./superhero-utils/index.css" />
 <script type="module">
-  import { createButton, ensurePaid } from './superhero-utils/index-without-styles.js';
+  import { ensurePaid } from './superhero-utils/index-without-styles.js';
 
   const target = 'ak_gvxNbZf5CuxYVfcUFoKAP4geZatWaC2Yy4jpx5vZoCKank4Gc';
 
-  /*
-   * Create superhero button instance by pointing element with its selector
-   */
-  createButton('.icon', target, { size: 'icon' });
-  createButton('.small', 2707, { size: 'small' });
-  createButton('.medium', 'nancyismyname.chain', { size: 'medium' });
-
-  /*
-   * Create superhero button instance by passing DOM element instance
-   */
-  createButton(document.querySelector('.large'), target, { size: 'large' });
-
-  // Initialize button a.superhero-tip-button appears dynamically
+  // Initialize a superhero-button appearing dynamically
   setTimeout(function () {
-    var btn = document.createElement('div');
+    var btn = document.createElement('superhero-button');
+    btn.setAttribute('target', target);
     document.body.appendChild(btn);
-    createButton(btn, target);
   }, 5000);
 
-  document
-    .querySelector('.ensure-paid')
-    .addEventListener('click', () => ensurePaid(target));
+  document.querySelector('.ensure-paid').addEventListener('click', () => ensurePaid(target));
 
   document
     .querySelector('.reset-paid-state')

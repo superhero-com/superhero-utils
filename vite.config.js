@@ -5,8 +5,6 @@ export default defineConfig({
     lib: {
       entry: {
         'index-without-styles': 'src/index.js',
-        'react-without-styles': 'src/react.js',
-        'vue-without-styles': 'src/vue.js',
       },
       formats: ['es'],
     },
