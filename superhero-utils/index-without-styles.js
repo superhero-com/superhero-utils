@@ -1,2 +1,100 @@
-/*! For license information please see index-without-styles.js.LICENSE.txt */
-!function(e,t){"object"==typeof exports&&"object"==typeof module?module.exports=t():"function"==typeof define&&define.amd?define([],t):"object"==typeof exports?exports.superheroUtils=t():e.superheroUtils=t()}(self,()=>(()=>{var e={172:e=>{e.exports=function(e,t){this.v=e,this.k=t},e.exports.__esModule=!0,e.exports.default=e.exports},373:e=>{e.exports=function(e){var t=Object(e),r=[];for(var n in t)r.unshift(n);return function e(){for(;r.length;)if((n=r.pop())in t)return e.value=n,e.done=!1,e;return e.done=!0,e}},e.exports.__esModule=!0,e.exports.default=e.exports},546:e=>{function t(r,n,o,a){var u=Object.defineProperty;try{u({},"",{})}catch(r){u=0}e.exports=t=function(e,r,n,o){function a(r,n){t(e,r,function(e){return this._invoke(r,n,e)})}r?u?u(e,r,{value:n,enumerable:!o,configurable:!o,writable:!o}):e[r]=n:(a("next",0),a("throw",1),a("return",2))},e.exports.__esModule=!0,e.exports.default=e.exports,t(r,n,o,a)}e.exports=t,e.exports.__esModule=!0,e.exports.default=e.exports},579:(e,t,r)=>{var n=r(738).default;e.exports=function(e){if(null!=e){var t=e["function"==typeof Symbol&&Symbol.iterator||"@@iterator"],r=0;if(t)return t.call(e);if("function"==typeof e.next)return e;if(!isNaN(e.length))return{next:function(){return e&&r>=e.length&&(e=void 0),{value:e&&e[r++],done:!e}}}}throw new TypeError(n(e)+" is not iterable")},e.exports.__esModule=!0,e.exports.default=e.exports},633:(e,t,r)=>{var n=r(172),o=r(993),a=r(869),u=r(887),i=r(791),c=r(373),s=r(579);function p(){"use strict";var t=o(),r=t.m(p),l=(Object.getPrototypeOf?Object.getPrototypeOf(r):r.__proto__).constructor;function f(e){var t="function"==typeof e&&e.constructor;return!!t&&(t===l||"GeneratorFunction"===(t.displayName||t.name))}var d={throw:1,return:2,break:3,continue:3};function v(e){var t,r;return function(n){t||(t={stop:function(){return r(n.a,2)},catch:function(){return n.v},abrupt:function(e,t){return r(n.a,d[e],t)},delegateYield:function(e,o,a){return t.resultName=o,r(n.d,s(e),a)},finish:function(e){return r(n.f,e)}},r=function(e,r,o){n.p=t.prev,n.n=t.next;try{return e(r,o)}finally{t.next=n.n}}),t.resultName&&(t[t.resultName]=n.v,t.resultName=void 0),t.sent=n.v,t.next=n.n;try{return e.call(this,t)}finally{n.p=t.prev,n.n=t.next}}}return(e.exports=p=function(){return{wrap:function(e,r,n,o){return t.w(v(e),r,n,o&&o.reverse())},isGeneratorFunction:f,mark:t.m,awrap:function(e,t){return new n(e,t)},AsyncIterator:i,async:function(e,t,r,n,o){return(f(t)?u:a)(v(e),t,r,n,o)},keys:c,values:s}},e.exports.__esModule=!0,e.exports.default=e.exports)()}e.exports=p,e.exports.__esModule=!0,e.exports.default=e.exports},738:e=>{function t(r){return e.exports=t="function"==typeof Symbol&&"symbol"==typeof Symbol.iterator?function(e){return typeof e}:function(e){return e&&"function"==typeof Symbol&&e.constructor===Symbol&&e!==Symbol.prototype?"symbol":typeof e},e.exports.__esModule=!0,e.exports.default=e.exports,t(r)}e.exports=t,e.exports.__esModule=!0,e.exports.default=e.exports},756:(e,t,r)=>{var n=r(633)();e.exports=n;try{regeneratorRuntime=n}catch(e){"object"==typeof globalThis?globalThis.regeneratorRuntime=n:Function("r","regeneratorRuntime = r")(n)}},791:(e,t,r)=>{var n=r(172),o=r(546);e.exports=function e(t,r){function a(e,o,u,i){try{var c=t[e](o),s=c.value;return s instanceof n?r.resolve(s.v).then(function(e){a("next",e,u,i)},function(e){a("throw",e,u,i)}):r.resolve(s).then(function(e){c.value=e,u(c)},function(e){return a("throw",e,u,i)})}catch(e){i(e)}}var u;this.next||(o(e.prototype),o(e.prototype,"function"==typeof Symbol&&Symbol.asyncIterator||"@asyncIterator",function(){return this})),o(this,"_invoke",function(e,t,n){function o(){return new r(function(t,r){a(e,n,t,r)})}return u=u?u.then(o,o):o()},!0)},e.exports.__esModule=!0,e.exports.default=e.exports},869:(e,t,r)=>{var n=r(887);e.exports=function(e,t,r,o,a){var u=n(e,t,r,o,a);return u.next().then(function(e){return e.done?e.value:u.next()})},e.exports.__esModule=!0,e.exports.default=e.exports},887:(e,t,r)=>{var n=r(993),o=r(791);e.exports=function(e,t,r,a,u){return new o(n().w(e,t,r,a),u||Promise)},e.exports.__esModule=!0,e.exports.default=e.exports},993:(e,t,r)=>{var n=r(546);function o(){var t,r,a="function"==typeof Symbol?Symbol:{},u=a.iterator||"@@iterator",i=a.toStringTag||"@@toStringTag";function c(e,o,a,u){var i=o&&o.prototype instanceof p?o:p,c=Object.create(i.prototype);return n(c,"_invoke",function(e,n,o){var a,u,i,c=0,p=o||[],l=!1,f={p:0,n:0,v:t,a:d,f:d.bind(t,4),d:function(e,r){return a=e,u=0,i=t,f.n=r,s}};function d(e,n){for(u=e,i=n,r=0;!l&&c&&!o&&r<p.length;r++){var o,a=p[r],d=f.p,v=a[2];e>3?(o=v===n)&&(i=a[(u=a[4])?5:(u=3,3)],a[4]=a[5]=t):a[0]<=d&&((o=e<2&&d<a[1])?(u=0,f.v=n,f.n=a[1]):d<v&&(o=e<3||a[0]>n||n>v)&&(a[4]=e,a[5]=n,f.n=v,u=0))}if(o||e>1)return s;throw l=!0,n}return function(o,p,v){if(c>1)throw TypeError("Generator is already running");for(l&&1===p&&d(p,v),u=p,i=v;(r=u<2?t:i)||!l;){a||(u?u<3?(u>1&&(f.n=-1),d(u,i)):f.n=i:f.v=i);try{if(c=2,a){if(u||(o="next"),r=a[o]){if(!(r=r.call(a,i)))throw TypeError("iterator result is not an object");if(!r.done)return r;i=r.value,u<2&&(u=0)}else 1===u&&(r=a.return)&&r.call(a),u<2&&(i=TypeError("The iterator does not provide a '"+o+"' method"),u=1);a=t}else if((r=(l=f.n<0)?i:e.call(n,f))!==s)break}catch(e){a=t,u=1,i=e}finally{c=1}}return{value:r,done:l}}}(e,a,u),!0),c}var s={};function p(){}function l(){}function f(){}r=Object.getPrototypeOf;var d=[][u]?r(r([][u]())):(n(r={},u,function(){return this}),r),v=f.prototype=p.prototype=Object.create(d);function y(e){return Object.setPrototypeOf?Object.setPrototypeOf(e,f):(e.__proto__=f,n(e,i,"GeneratorFunction")),e.prototype=Object.create(v),e}return l.prototype=f,n(v,"constructor",f),n(f,"constructor",l),l.displayName="GeneratorFunction",n(f,i,"GeneratorFunction"),n(v),n(v,i,"Generator"),n(v,u,function(){return this}),n(v,"toString",function(){return"[object Generator]"}),(e.exports=o=function(){return{w:c,m:y}},e.exports.__esModule=!0,e.exports.default=e.exports)()}e.exports=o,e.exports.__esModule=!0,e.exports.default=e.exports}},t={};function r(n){var o=t[n];if(void 0!==o)return o.exports;var a=t[n]={exports:{}};return e[n](a,a.exports,r),a.exports}r.n=e=>{var t=e&&e.__esModule?()=>e.default:()=>e;return r.d(t,{a:t}),t},r.d=(e,t)=>{for(var n in t)r.o(t,n)&&!r.o(e,n)&&Object.defineProperty(e,n,{enumerable:!0,get:t[n]})},r.o=(e,t)=>Object.prototype.hasOwnProperty.call(e,t),r.r=e=>{"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})};var n={};return(()=>{"use strict";function e(e,t){(null==t||t>e.length)&&(t=e.length);for(var r=0,n=Array(t);r<t;r++)n[r]=e[r];return n}function t(t,r){return function(e){if(Array.isArray(e))return e}(t)||function(e,t){var r=null==e?null:"undefined"!=typeof Symbol&&e[Symbol.iterator]||e["@@iterator"];if(null!=r){var n,o,a,u,i=[],c=!0,s=!1;try{if(a=(r=r.call(e)).next,0===t){if(Object(r)!==r)return;c=!1}else for(;!(c=(n=a.call(r)).done)&&(i.push(n.value),i.length!==t);c=!0);}catch(e){s=!0,o=e}finally{try{if(!c&&null!=r.return&&(u=r.return(),Object(u)!==u))return}finally{if(s)throw o}}return i}}(t,r)||function(t,r){if(t){if("string"==typeof t)return e(t,r);var n={}.toString.call(t).slice(8,-1);return"Object"===n&&t.constructor&&(n=t.constructor.name),"Map"===n||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?e(t,r):void 0}}(t,r)||function(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}()}function o(e,t,r,n,o,a,u){try{var i=e[a](u),c=i.value}catch(e){return void r(e)}i.done?t(c):Promise.resolve(c).then(n,o)}function a(e){return function(){var t=this,r=arguments;return new Promise(function(n,a){var u=e.apply(t,r);function i(e){o(u,n,a,i,c,"next",e)}function c(e){o(u,n,a,i,c,"throw",e)}i(void 0)})}}r.r(n),r.d(n,{createButton:()=>v,createButtonByDiv:()=>d,ensurePaid:()=>M});var u=r(756),i=r.n(u),c=["size"];function s(e){return p.apply(this,arguments)}function p(){return(p=a(i().mark(function e(t){var r;return i().wrap(function(e){for(;;)switch(e.prev=e.next){case 0:return e.next=1,fetch(t);case 1:if((r=e.sent).ok){e.next=2;break}throw new Error("Failed to fetch JSON");case 2:return e.abrupt("return",r.json());case 3:case"end":return e.stop()}},e)}))).apply(this,arguments)}var l=function(e,r,n){var o="number"==typeof e,a=new URL("https://wallet.superhero.com/account");a.searchParams.set("payload",o?"TIP_POST:".concat(e):"TIP_PROFILE"),a.searchParams.set("account",o?r:e);var u="https://superhero.com/";return a.searchParams.set("x-success",u),a.searchParams.set("x-cancel",u),Object.entries(n).filter(function(e){var r=t(e,2)[1];return![void 0,null].includes(r)}).forEach(function(e){var r=t(e,2),n=r[0],o=r[1];return a.searchParams.set(n,o)}),a},f=function(){var e=a(i().mark(function e(t){var r,n,o,a,u,c;return i().wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(e.prev=0,"number"!=typeof t){e.next=2;break}return e.next=1,s("https://api.superhero.com/api/tips/posts/".concat(t,"_v3/summary"));case 1:return e.abrupt("return",+e.sent.totalTips);case 2:if(!t.endsWith(".chain")){e.next=7;break}return e.next=3,s("https://mainnet.aeternity.io/v3/names/".concat(t));case 3:if(u=r=e.sent.pointers.find(function(e){return"account_pubkey"===e.key}),a=null===u){e.next=4;break}a=void 0===r;case 4:if(!a){e.next=5;break}c=void 0,e.next=6;break;case 5:c=r.id;case 6:o=c,e.next=8;break;case 7:o=t;case 8:return n=o,e.next=9,s("https://api.superhero.com/api/tips/accounts/".concat(n,"/summary"));case 9:return e.abrupt("return",+e.sent.totalTipsReceived);case 10:return e.prev=10,e.catch(0),e.abrupt("return",0);case 11:case"end":return e.stop()}},e,null,[[0,10]])}));return function(t){return e.apply(this,arguments)}}(),d=function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},n=r.size,o=void 0===n?"icon":n,u=function(e,t){if(null==e)return{};var r,n,o=function(e,t){if(null==e)return{};var r={};for(var n in e)if({}.hasOwnProperty.call(e,n)){if(-1!==t.indexOf(n))continue;r[n]=e[n]}return r}(e,t);if(Object.getOwnPropertySymbols){var a=Object.getOwnPropertySymbols(e);for(n=0;n<a.length;n++)r=a[n],-1===t.indexOf(r)&&{}.propertyIsEnumerable.call(e,r)&&(o[r]=e[r])}return o}(r,c),p=function(){var e=arguments.length>0&&void 0!==arguments[0]?arguments[0]:"";return'\n    <a href="'.concat(l(t,void 0,u),'">\n      <img alt="Superhero Icon" src="').concat("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiPz4KPHN2ZyB2aWV3Qm94PSIwIDAgMjkgMjMiIHZlcnNpb249IjEuMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+CiAgICA8dGl0bGU+ZmF2aWNvbjwvdGl0bGU+CiAgICA8ZyBpZD0iUGFnZS01IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIiBzdHJva2UtbGluZWpvaW49InJvdW5kIj4KICAgICAgICA8ZyBpZD0iZmF2aWNvbiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMyLjAwMDAwMCwgMS4wMDAwMDApIiBmaWxsPSIjMTE2MUZFIiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0iIzExNjFGRSIgc3Ryb2tlLXdpZHRoPSIwLjMiPgogICAgICAgICAgICA8cGF0aCBkPSJNMzkuNTU0NzAzMSw0LjcwNzM0NTYyZS0xNCBMNTIuOTcxNzkzLDAuMDA0NDUxMDYxNyBMNjAuNTI2NTE5MSw3LjA2NjMzNTgxIEw1NS43MzM2Mjc0LDExLjc2MTM5MjYgTDU1LjY2Mzg0NzYsMTEuODgwNTI1NiBMNTUuNjEyODI0NSwxMS44Nzk5NDQ0IEw0Ni4zMDU3NDE0LDIxIEwzMiw3LjA2MTIzMDI0IEwzOS41NTQ3MDMxLDQuNzA3MzQ1NjJlLTE0IFogTTQwLjQxMTAzNzYsMi4xNjg2Mzk3MyBMMzUuMTQwNTkxNSw3LjA5NDgyMDU2IEw0Ni4zMDA0NzY1LDE3Ljk2ODQzMTcgTDUzLjI5MjgxMDEsMTEuMTE2ODYwOCBMNDQuNTEyNDcxLDIuMTY5OTQ4NzkgTDQwLjQxMTAzNzYsMi4xNjg2Mzk3MyBaIj48L3BhdGg+CiAgICAgICAgPC9nPgogICAgPC9nPgo8L3N2Zz4K",'" />\n      ').concat(e&&"<span>".concat(e,"</span>"),"\n    </a>")},d='\n    <div class="tips-amount">\n      <span class="tips">0</span>\n      <span class="ae">AE</span>\n    </div>',v={icon:p(),small:p("Donate")+d,medium:p("Donate Now")+d,large:d+p("Donate Now")};if(!v[o])throw new Error("Unsupported size");return e.innerHTML=v[o],e.className="superhero-utils-button ".concat(o),a(i().mark(function r(){var n,o;return i().wrap(function(r){for(;;)switch(r.prev=r.next){case 0:if("number"==typeof t){r.next=1;break}return r.abrupt("return");case 1:return r.next=2,s("https://api.superhero.com/api/posts/".concat(t,"_v3"));case 2:n=r.sent,o=n.sender_address,e.querySelector("a").setAttribute("href",l(t,o,u));case 3:case"end":return r.stop()}},r)}))(),a(i().mark(function r(){var n;return i().wrap(function(r){for(;;)switch(r.prev=r.next){case 0:if(!(n=e.querySelector(".tips"))){r.next=2;break}return r.next=1,f(t);case 1:n.innerHTML=r.sent;case 2:case"end":return r.stop()}},r)}))(),e};const v=function(e,t){var r=arguments.length>2&&void 0!==arguments[2]?arguments[2]:{},n="string"==typeof e?document.querySelectorAll(e):e,o=function(e){var n=d(document.createElement("div"),t,r);return e.replaceWith(n),n};return NodeList.prototype.isPrototypeOf(n)?Array.from(n).map(o):o(n)};var y="superhero-paywall-paid-targets",x="superhero-paywall-tip-result",m="success",b=function(){return localStorage[y]?JSON.parse(localStorage[y]):[]},h=function(e){var t=b();t.includes(e)||(t.push(e),localStorage[y]=JSON.stringify(t))};const M=function(){var e=a(i().mark(function e(t){var r,n;return i().wrap(function(e){for(;;)switch(e.prev=e.next){case 0:if(new URL(window.location).searchParams.get(x)===m&&h(t),!b().includes(t)){e.next=1;break}return e.abrupt("return");case 1:(r=document.createElement("div")).className="superhero-utils-paywall",r.innerHTML='\n    <div class="modal">\n      You need to leave a tip to continue\n      <br />\n      <div class="button" />\n    </div>\n  ',(n=new URL(window.location.href)).searchParams.set(x,m),v(r.querySelector(".button"),t,{size:"small","x-success":n}),document.body.style.overflow="hidden",document.body.appendChild(r);case 2:case"end":return e.stop()}},e)}));return function(t){return e.apply(this,arguments)}}()})(),n})());
+const m = "data:image/svg+xml,%3c?xml%20version='1.0'%20encoding='UTF-8'?%3e%3csvg%20viewBox='0%200%2029%2023'%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'%20xmlns:xlink='http://www.w3.org/1999/xlink'%3e%3ctitle%3efavicon%3c/title%3e%3cg%20id='Page-5'%20stroke='none'%20stroke-width='1'%20fill='none'%20fill-rule='evenodd'%20stroke-linejoin='round'%3e%3cg%20id='favicon'%20transform='translate(-32.000000,%201.000000)'%20fill='%231161FE'%20fill-rule='nonzero'%20stroke='%231161FE'%20stroke-width='0.3'%3e%3cpath%20d='M39.5547031,4.70734562e-14%20L52.971793,0.0044510617%20L60.5265191,7.06633581%20L55.7336274,11.7613926%20L55.6638476,11.8805256%20L55.6128245,11.8799444%20L46.3057414,21%20L32,7.06123024%20L39.5547031,4.70734562e-14%20Z%20M40.4110376,2.16863973%20L35.1405915,7.09482056%20L46.3004765,17.9684317%20L53.2928101,11.1168608%20L44.512471,2.16994879%20L40.4110376,2.16863973%20Z'%3e%3c/path%3e%3c/g%3e%3c/g%3e%3c/svg%3e";
+async function c(t) {
+  const e = await fetch(t);
+  if (!e.ok) throw new Error("Failed to fetch JSON");
+  return e.json();
+}
+const l = (t, e, s) => {
+  const i = typeof t == "number", n = new URL("https://wallet.superhero.com/account");
+  n.searchParams.set("payload", i ? `TIP_POST:${t}` : "TIP_PROFILE"), n.searchParams.set("account", i ? e : t);
+  const o = "https://superhero.com/";
+  return n.searchParams.set("x-success", o), n.searchParams.set("x-cancel", o), Object.entries(s).filter(([, a]) => ![void 0, null].includes(a)).forEach(([a, r]) => n.searchParams.set(a, r)), n;
+}, g = async (t) => {
+  try {
+    if (typeof t == "number")
+      return +(await c(`https://api.superhero.com/api/tips/posts/${t}_v3/summary`)).totalTips;
+    const e = t.endsWith(".chain") ? (await c(`https://mainnet.aeternity.io/v3/names/${t}`)).pointers.find(
+      ({ key: s }) => s === "account_pubkey"
+    )?.id : t;
+    return +(await c(`https://api.superhero.com/api/tips/accounts/${e}/summary`)).totalTipsReceived;
+  } catch {
+    return 0;
+  }
+};
+class f extends HTMLElement {
+  static get observedAttributes() {
+    return ["target", "size"];
+  }
+  connectedCallback() {
+    this.render();
+  }
+  attributeChangedCallback() {
+    this.render();
+  }
+  getParsedTarget() {
+    const e = this.getAttribute("target");
+    if (e == null) return;
+    const s = Number(e);
+    return Number.isInteger(s) ? s : e;
+  }
+  getSize() {
+    return this.getAttribute("size") || "icon";
+  }
+  getOptionsFromAttributes() {
+    const e = {};
+    for (const s of this.getAttributeNames())
+      s === "target" || s === "size" || (e[s] = this.getAttribute(s));
+    return e;
+  }
+  render() {
+    const e = this.getParsedTarget(), s = this.getSize(), i = this.getOptionsFromAttributes(), n = (r = "") => `
+      <a href="${l(e, void 0, i)}">
+        <img alt="Superhero Icon" src="${m}" />
+        ${r && `<span>${r}</span>`}
+      </a>`, o = `
+      <div class="tips-amount">
+        <span class="tips">0</span>
+        <span class="ae">AE</span>
+      </div>`, a = {
+      icon: n(),
+      small: n("Donate") + o,
+      medium: n("Donate Now") + o,
+      large: o + n("Donate Now")
+    };
+    if (!a[s]) throw new Error("Unsupported size");
+    this.className = `superhero-utils-button ${s}`, this.innerHTML = a[s], (async () => {
+      if (typeof e != "number") return;
+      const { sender_address: r } = await c(
+        `https://api.superhero.com/api/posts/${e}_v3`
+      );
+      this.querySelector("a")?.setAttribute(
+        "href",
+        l(e, r, i)
+      );
+    })(), (async () => {
+      const r = this.querySelector(".tips");
+      r && e != null && (r.innerHTML = String(await g(e)));
+    })();
+  }
+}
+customElements.get("superhero-button") || customElements.define("superhero-button", f);
+const u = "superhero-paywall-paid-targets", p = "superhero-paywall-tip-result", d = "success", h = () => localStorage[u] ? JSON.parse(localStorage[u]) : [], w = (t) => {
+  const e = h();
+  e.includes(t) || (e.push(t), localStorage[u] = JSON.stringify(e));
+}, b = async (t) => {
+  if (new URL(window.location).searchParams.get(p) === d && w(t), h().includes(t)) return;
+  const e = document.createElement("div");
+  e.className = "superhero-utils-paywall";
+  const s = new URL(window.location.href);
+  s.searchParams.set(p, d), e.innerHTML = `
+    <div class="modal">
+      You need to leave a tip to continue
+      <br />
+      <superhero-button target="${t}" size="small" x-success="${s}"></superhero-button>
+    </div>
+  `, document.body.style.overflow = "hidden", document.body.appendChild(e);
+};
+export {
+  f as Button,
+  b as ensurePaid
+};
