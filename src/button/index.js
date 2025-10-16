@@ -39,59 +39,86 @@ const getTipAmount = async (target) => {
   }
 };
 
-export const createButtonByDiv = (divElement, target, { size = 'icon', ...options } = {}) => {
-  const genLink = (text = '') => `
-    <a href="${genTipDeepLink(target, undefined, options)}">
-      <img alt="Superhero Icon" src="${icon}" />
-      ${text && `<span>${text}</span>`}
-    </a>`;
+export default class SuperheroButton extends HTMLElement {
+  static get observedAttributes() {
+    return ['target', 'size'];
+  }
 
-  const tipsAmount = `
-    <div class="tips-amount">
-      <span class="tips">0</span>
-      <span class="ae">AE</span>
-    </div>`;
+  connectedCallback() {
+    this.render();
+  }
 
-  const templates = {
-    icon: genLink(),
-    small: genLink('Donate') + tipsAmount,
-    medium: genLink('Donate Now') + tipsAmount,
-    large: tipsAmount + genLink('Donate Now'),
-  };
+  attributeChangedCallback() {
+    this.render();
+  }
 
-  if (!templates[size]) throw new Error('Unsupported size');
-  divElement.innerHTML = templates[size];
-  divElement.className = `superhero-utils-button ${size}`;
+  getParsedTarget() {
+    const raw = this.getAttribute('target');
+    if (raw == null) return undefined;
+    const asNumber = Number(raw);
+    return Number.isInteger(asNumber) ? asNumber : raw;
+  }
 
-  (async () => {
-    if (typeof target !== 'number') return;
-    const { sender_address } = await fetchJson(`https://api.superhero.com/api/posts/${target}_v3`);
-    divElement
-      .querySelector('a')
-      .setAttribute('href', genTipDeepLink(target, sender_address, options));
-  })();
+  getSize() {
+    return this.getAttribute('size') || 'icon';
+  }
 
-  (async () => {
-    const tipsEl = divElement.querySelector('.tips');
-    if (tipsEl) tipsEl.innerHTML = await getTipAmount(target);
-  })();
+  getOptionsFromAttributes() {
+    const options = {};
+    for (const name of this.getAttributeNames()) {
+      if (name === 'target' || name === 'size') continue;
+      options[name] = this.getAttribute(name);
+    }
+    return options;
+  }
 
-  return divElement;
-};
+  render() {
+    const target = this.getParsedTarget();
+    const size = this.getSize();
+    const options = this.getOptionsFromAttributes();
 
-export default (selectorOrElement, target, options = {}) => {
-  const element =
-    typeof selectorOrElement === 'string'
-      ? document.querySelectorAll(selectorOrElement)
-      : selectorOrElement;
+    const genLink = (text = '') => `
+      <a href="${genTipDeepLink(target, undefined, options)}">
+        <img alt="Superhero Icon" src="${icon}" />
+        ${text && `<span>${text}</span>`}
+      </a>`;
 
-  const handleElement = (element) => {
-    const instance = createButtonByDiv(document.createElement('div'), target, options);
-    element.replaceWith(instance);
-    return instance;
-  };
+    const tipsAmount = `
+      <div class="tips-amount">
+        <span class="tips">0</span>
+        <span class="ae">AE</span>
+      </div>`;
 
-  return NodeList.prototype.isPrototypeOf(element)
-    ? Array.from(element).map(handleElement)
-    : handleElement(element);
-};
+    const templates = {
+      icon: genLink(),
+      small: genLink('Donate') + tipsAmount,
+      medium: genLink('Donate Now') + tipsAmount,
+      large: tipsAmount + genLink('Donate Now'),
+    };
+
+    if (!templates[size]) throw new Error('Unsupported size');
+
+    this.className = `superhero-utils-button ${size}`;
+    this.innerHTML = templates[size];
+
+    (async () => {
+      if (typeof target !== 'number') return;
+      const { sender_address } = await fetchJson(
+        `https://api.superhero.com/api/posts/${target}_v3`,
+      );
+      this.querySelector('a')?.setAttribute(
+        'href',
+        genTipDeepLink(target, sender_address, options),
+      );
+    })();
+
+    (async () => {
+      const tipsEl = this.querySelector('.tips');
+      if (tipsEl && target != null) tipsEl.innerHTML = String(await getTipAmount(target));
+    })();
+  }
+}
+
+if (!customElements.get('superhero-button')) {
+  customElements.define('superhero-button', SuperheroButton);
+}

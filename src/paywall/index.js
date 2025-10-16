@@ -1,5 +1,5 @@
 import './index.scss';
-import createButton from '../button';
+import '../button';
 
 const localStorageKey = 'superhero-paywall-paid-targets';
 const urlResult = 'superhero-paywall-tip-result';
@@ -22,20 +22,15 @@ export default async (target) => {
 
   const overlay = document.createElement('div');
   overlay.className = 'superhero-utils-paywall';
+  const successUrl = new URL(window.location.href);
+  successUrl.searchParams.set(urlResult, urlParamSuccess);
   overlay.innerHTML = `
     <div class="modal">
       You need to leave a tip to continue
       <br />
-      <div class="button" />
+      <superhero-button target="${target}" size="small" x-success="${successUrl}"></superhero-button>
     </div>
   `;
-
-  const successUrl = new URL(window.location.href);
-  successUrl.searchParams.set(urlResult, urlParamSuccess);
-  createButton(overlay.querySelector('.button'), target, {
-    size: 'small',
-    'x-success': successUrl,
-  });
 
   document.body.style.overflow = 'hidden';
   document.body.appendChild(overlay);
