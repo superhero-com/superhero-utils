@@ -13,22 +13,22 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 24
           cache: 'npm'
       - run: npm install
-      - run: npm install --prefix examples/react-webpack
-      - run: npm install --prefix examples/vue-webpack
+      - run: npm install --prefix examples/react-vite
+      - run: npm install --prefix examples/vue-vite
       - run: npm run build
-      - run: NODE_OPTIONS=--openssl-legacy-provider npm run build:examples
+      - run: npm run build:examples
       - name: Prepare examples for deployment
         run: |
           mkdir gh-pages
           mv dist gh-pages/superhero-utils
           mv examples/*.html gh-pages/
-          mkdir gh-pages/react-webpack
-          mv examples/react-webpack/build gh-pages/react-webpack/build
-          mkdir gh-pages/vue-webpack
-          mv examples/vue-webpack/dist gh-pages/vue-webpack/dist
+          mkdir gh-pages/react-vite
+          mv examples/react-vite/dist gh-pages/react-vite/dist
+          mkdir gh-pages/vue-vite
+          mv examples/vue-vite/dist gh-pages/vue-vite/dist
       - uses: actions/upload-artifact@v4
         if: github.ref == 'refs/heads/master'
         with:
